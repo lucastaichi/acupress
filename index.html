@@ -1145,6 +1145,19 @@ function wSetChips(items){
     wChips.appendChild(btn);
   });
 }
+// ── Gemini API ────────────────────────────────────────────────────────────────
+// Obtenha sua chave gratuita em: https://aistudio.google.com/apikey
+const GEMINI_KEY = 'const GEMINI_KEY = 'AIzaSyCEA2X8tgbwWeqj8cxI6garfUP98g_bGqw';
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`;
+
+// Converte histórico formato interno → formato Gemini
+function toGeminiContents(history){
+  return history.map(m => ({
+    role: m.role === 'assistant' ? 'model' : 'user',
+    parts: [{ text: m.content }]
+  }));
+}
+
 async function wSendMsg(){
   const text=wInput.value.trim();
   if(!text||wLoading) return;
@@ -1156,24 +1169,32 @@ async function wSendMsg(){
   else if(wPhase===1&&wHistory.length>=4) wSetPhase(2);
   wLoading=true;wSend.disabled=true;wAddTyping();
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
-      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:1000,system:SYSTEM,messages:wHistory})
+    const payload = {
+      system_instruction: { parts: [{ text: SYSTEM }] },
+      contents: toGeminiContents(wHistory),
+      generationConfig: {
+        maxOutputTokens: 1500,
+        temperature: 0.7
+      }
+    };
+    const res = await fetch(GEMINI_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
-    const data=await res.json();
+    const data = await res.json();
+    // Erro da API Gemini
     if(data.error){
       wRmTyping();
-      wAddAI('Erro da API: ' + (data.error.message||JSON.stringify(data.error)));
+      wAddAI('Erro da API: ' + (data.error.message || JSON.stringify(data.error)));
       wHistory.pop(); wLoading=false; wSend.disabled=false; return;
     }
-    const raw=data.content?.[0]?.text||'';
+    // Extrai texto da resposta Gemini
+    const raw = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
     if(!raw){
       wRmTyping();
-      wAddAI('Resposta vazia. Tente novamente.');
+      const reason = data.candidates?.[0]?.finishReason || 'desconhecido';
+      wAddAI('Resposta vazia (motivo: ' + reason + '). Tente novamente.');
       wHistory.pop(); wLoading=false; wSend.disabled=false; return;
     }
     wHistory.push({role:'assistant',content:raw});
@@ -1187,7 +1208,7 @@ async function wSendMsg(){
     } else {wAddAI(raw);}
   }catch(err){
     wRmTyping();
-    wAddAI('Erro de conexão com o assistente. Por favor, tente novamente.');
+    wAddAI('Erro de conexão. Verifique sua chave Gemini e tente novamente.');
     wHistory.pop();
   }
   wLoading=false;wSend.disabled=false;wInput.focus();
