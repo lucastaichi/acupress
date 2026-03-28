@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas de Acupressura — Meridianos & Pontos</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15100a;--paper:#f6eedd;--paper2:#ede0c8;--paper3:#e5d3b3;
+  --red:#8b1a1a;--gold:#b8860b;--gold-l:#d4a017;
+  --jade:#2d6a4f;--muted:#7a6550;--border:#c8a97a;
+  --shadow:rgba(21,16,10,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--paper);color:var(--ink);
+  background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b8860b' fill-opacity='0.035'%3E%3Cpath d='M0 0h4v4H0V0zm8 8h4v4H8V8zm8 0h4v4h-4V8zm8-8h4v4h-4V0zm8 8h4v4h-4V8zm8 0h4v4h-4V8zm8-8h4v4h-4V0zm8 8h4v4h-4V8z'/%3E%3C/g%3E%3C/svg%3E")}
+
+/* ─── HEADER ─── */
+header{background:var(--ink);color:var(--paper);text-align:center;padding:3.5rem 2rem 2.8rem;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% -10%,rgba(184,134,11,.18) 0%,transparent 55%)}
+.h-hanzi{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Noto Serif SC',serif;font-size:18rem;color:rgba(255,255,255,.022);
+  pointer-events:none;white-space:nowrap;z-index:0;line-height:1;letter-spacing:.15em}
+.h-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.h-zh{font-family:'Noto Serif SC',serif;font-size:2.2rem;color:var(--gold-l);
+  letter-spacing:.5em;display:block;margin-bottom:.9rem}
+header h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:700;letter-spacing:.07em;margin-bottom:.45rem}
+header p{font-style:italic;color:rgba(246,238,221,.62);font-size:1.08rem;margin-bottom:1.4rem}
+.h-div{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-l),transparent);margin:1.2rem auto}
+.h-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;margin-top:1rem}
+.h-tags span{background:rgba(184,134,11,.13);border:1px solid rgba(184,134,11,.3);
+  color:var(--gold-l);padding:.22rem .85rem;border-radius:20px;
+  font-size:.78rem;letter-spacing:.05em;font-family:'Cinzel',serif}
+
+/* ─── INTRO ─── */
+.intro{max-width:800px;margin:2.8rem auto 1.5rem;padding:0 2rem;text-align:center}
+.intro p{font-size:1.05rem;line-height:1.95;color:#3d2c18}
+.intro strong{color:var(--red)}
+
+/* ─── SECTION TITLE ─── */
+.sec-t{max-width:1140px;margin:2.5rem auto .9rem;padding:0 1.5rem}
+.sec-t h2{font-family:'Cinzel',serif;font-size:.88rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);
+  display:flex;align-items:center;gap:1rem}
+.sec-t h2::before,.sec-t h2::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* ─── DIAGRAM GRID ─── */
+.dgrid{max-width:1140px;margin:0 auto 3rem;padding:0 1.5rem;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1.2rem}
+.dcard{background:var(--paper2);border:1px solid var(--border);border-radius:5px;
+  overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;
+  box-shadow:0 2px 12px var(--shadow)}
+.dcard:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(21,16,10,.22)}
+.dcard-head{padding:.65rem 1rem;display:flex;align-items:center;gap:.7rem;
+  border-bottom:1px solid var(--border)}
+.dc-bar{width:3px;height:32px;border-radius:2px;flex-shrink:0}
+.dc-name{font-family:'Cinzel',serif;font-size:.83rem;font-weight:600;letter-spacing:.02em;line-height:1.3}
+.dc-zh{font-family:'Noto Serif SC',serif;font-size:.78rem;color:var(--gold);margin-left:auto;letter-spacing:.08em}
+.dcard-svg{background:#f8f2e8;display:flex;justify-content:center;align-items:center;padding:.5rem;min-height:235px;
+  position:relative;border-bottom:1px solid rgba(200,169,122,.4)}
+.dcard-svg svg{display:block}
+.dcard-foot{padding:.55rem 1rem;display:flex;gap:.6rem;align-items:center}
+.dc-spt{font-family:'Cinzel',serif;font-size:.72rem;color:var(--jade);font-weight:700}
+.dc-sen{font-family:'Cinzel',serif;font-size:.7rem;color:var(--muted)}
+.dc-pts{margin-left:auto;font-size:.7rem;color:var(--muted);font-family:'Cinzel',serif}
+
+/* ─── NAV ─── */
+.nav-s{max-width:1140px;margin:1.5rem auto;padding:0 1.5rem}
+.mernav{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:center}
+.mbtn{padding:.4rem .9rem;border-radius:4px;border:1px solid var(--border);
+  background:var(--paper2);color:var(--ink);font-family:'EB Garamond',serif;
+  font-size:.88rem;cursor:pointer;transition:all .18s}
+.mbtn:hover,.mbtn.active{background:var(--ink);color:var(--gold-l);border-color:var(--gold)}
+.mbtn .s{font-family:'Cinzel',serif;font-size:.7rem;opacity:.7;margin-left:.2rem}
+
+/* ─── SEARCH ─── */
+.sbar{max-width:500px;margin:1.4rem auto;padding:0 1.5rem;display:flex;gap:.45rem}
+.sbar input{flex:1;padding:.6rem 1.1rem;border:1px solid var(--border);border-radius:4px;
+  font-family:'EB Garamond',serif;font-size:1rem;background:var(--paper2);color:var(--ink);outline:none}
+.sbar input:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(184,134,11,.1)}
+.sbar button{padding:.6rem 1.1rem;background:var(--ink);color:var(--gold-l);border:none;
+  border-radius:4px;cursor:pointer;font-family:'Cinzel',serif;font-size:.8rem;
+  letter-spacing:.05em;transition:background .18s}
+.sbar button:hover{background:var(--red)}
+
+/* ─── LEGEND ─── */
+.leg{max-width:1140px;margin:0 auto .6rem;padding:0 1.5rem;
+  display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+.leg-t{font-family:'Cinzel',serif;font-size:.76rem;letter-spacing:.1em;color:var(--muted);margin-right:.4rem}
+.li{display:flex;align-items:center;gap:.35rem;font-size:.78rem;color:var(--muted)}
+.lc{width:10px;height:10px;border-radius:2px}
+
+/* ─── INTRO GUIDE ─── */
+.guide-wrap{max-width:1140px;margin:0 auto 1rem;padding:0 1.5rem}
+.guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem;margin-top:1rem}
+.guide-card{background:#fdf8f1;border:1px solid var(--border);border-radius:5px;
+  padding:1.1rem 1.3rem;box-shadow:0 2px 10px var(--shadow)}
+.guide-card h3{font-family:'Cinzel',serif;font-size:.82rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:.65rem;
+  padding-bottom:.45rem;border-bottom:1px solid var(--border)}
+.guide-card p,.guide-card li{font-size:.9rem;line-height:1.75;color:#3d2c18}
+.guide-card ul{padding-left:1.1rem;margin-top:.3rem}
+.guide-card li{margin-bottom:.2rem}
+.guide-card strong{color:var(--ink)}
+.guide-card .note{font-style:italic;color:var(--muted);font-size:.82rem;margin-top:.5rem}
+
+/* ─── INDICATION INDEX ─── */
+.idx-wrap{max-width:1140px;margin:0 auto 2rem;padding:0 1.5rem}
+.idx-sbar{display:flex;gap:.5rem;margin-bottom:1rem}
+.idx-sbar input{flex:1;padding:.6rem 1.1rem;border:1px solid var(--border);border-radius:4px;
+  font-family:'EB Garamond',serif;font-size:1rem;background:var(--paper2);color:var(--ink);outline:none}
+.idx-sbar input:focus{border-color:var(--gold);box-shadow:0 0 0 2px rgba(184,134,11,.1)}
+.idx-cats{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.idx-cat{padding:.3rem .8rem;border-radius:4px;border:1px solid var(--border);
+  background:var(--paper2);font-family:'Cinzel',serif;font-size:.72rem;
+  letter-spacing:.06em;cursor:pointer;transition:all .18s;color:var(--muted)}
+.idx-cat:hover,.idx-cat.active{background:var(--ink);color:var(--gold-l);border-color:var(--gold)}
+.idx-results{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.7rem}
+.idx-empty{color:var(--muted);font-style:italic;font-size:.95rem;padding:1rem 0}
+.idx-card{background:#fdf8f1;border:1px solid var(--border);border-radius:4px;
+  padding:.75rem 1rem;box-shadow:0 1px 6px var(--shadow);cursor:pointer;transition:all .18s}
+.idx-card:hover{border-color:var(--gold);background:#fdf5e8}
+.idx-ind{font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
+.idx-pts{display:flex;flex-wrap:wrap;gap:.3rem}
+.idx-pt{font-family:'Cinzel',serif;font-size:.72rem;padding:.12rem .42rem;
+  border-radius:3px;border:1px solid;cursor:pointer;transition:all .15s}
+.idx-pt:hover{opacity:.75;transform:scale(1.05)}
+.content{max-width:1140px;margin:0 auto;padding:0 1.5rem 5rem}
+.mblock{margin-bottom:3rem;background:#fdf8f1;border-radius:5px;
+  border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 16px var(--shadow)}
+.mblock.hidden{display:none}
+.mhd{background:var(--ink);color:var(--paper);padding:1.1rem 1.7rem;
+  display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;position:relative;overflow:hidden}
+.mhd::after{content:attr(data-zh);position:absolute;right:1.4rem;top:50%;
+  transform:translateY(-50%);font-family:'Noto Serif SC',serif;
+  font-size:4rem;color:rgba(255,255,255,.05);pointer-events:none;line-height:1}
+.mbar{width:4px;height:48px;border-radius:2px;flex-shrink:0}
+.mt h3{font-family:'Cinzel',serif;font-size:1.18rem;letter-spacing:.04em;margin-bottom:.18rem}
+.mt .mzh{font-family:'Noto Serif SC',serif;font-size:.95rem;color:var(--gold-l)}
+.msig{margin-left:auto;text-align:right;font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.1em}
+.msig .pt{color:var(--gold-l);display:block}
+.msig .en{color:rgba(246,238,221,.45);font-size:.73rem}
+.minfo{padding:.8rem 1.7rem;background:rgba(21,16,10,.04);border-bottom:1px solid var(--border);
+  font-style:italic;color:var(--muted);font-size:.9rem;display:flex;gap:1.8rem;flex-wrap:wrap}
+.minfo span strong{font-style:normal;color:var(--ink)}
+.mdesc{padding:.8rem 1.7rem .55rem;font-size:.93rem;color:#4a3418;border-bottom:1px solid var(--border);line-height:1.72}
+
+/* ─── TABLE ─── */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+thead tr{background:rgba(21,16,10,.055)}
+thead th{padding:.65rem .95rem;font-family:'Cinzel',serif;font-size:.7rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;
+  border-bottom:2px solid var(--border);white-space:nowrap}
+tbody tr{border-bottom:1px solid rgba(200,169,122,.25);transition:background .14s}
+tbody tr:hover{background:rgba(184,134,11,.05)}
+tbody td{padding:.58rem .95rem;vertical-align:top;line-height:1.5}
+.tn{font-family:'Cinzel',serif;font-weight:600;color:var(--red);font-size:.84rem;white-space:nowrap}
+.tpt{font-family:'Cinzel',serif;font-size:.78rem;color:var(--jade);font-weight:600}
+.ten{font-family:'Cinzel',serif;font-size:.78rem;color:var(--muted)}
+.tloc{color:var(--muted);font-size:.84rem}
+.tag{display:inline-block;background:rgba(45,106,79,.08);border:1px solid rgba(45,106,79,.2);
+  color:var(--jade);border-radius:3px;padding:.07rem .4rem;margin:.1rem .07rem;
+  font-size:.74rem;font-family:'Cinzel',serif;letter-spacing:.02em}
+.tagw{background:rgba(139,26,26,.07);border-color:rgba(139,26,26,.2);color:var(--red)}
+.tag-imp{background:rgba(139,26,26,.09);border-color:rgba(139,26,26,.25);color:var(--red);font-weight:700}
+.tec-wrap{font-size:.82rem;line-height:1.55}
+.tec-tipo{color:var(--ink);font-weight:500}
+.tec-row{display:flex;gap:.3rem;align-items:baseline;margin-top:.18rem;flex-wrap:wrap}
+.tec-label{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:.06em;color:var(--muted);
+  background:rgba(26,18,8,.06);border-radius:2px;padding:.05rem .3rem;white-space:nowrap;flex-shrink:0}
+.tec-val{color:#3d2c18;font-size:.82rem}
+.tec-proto{display:inline-block;margin-top:.22rem;background:rgba(184,134,11,.1);
+  border:1px solid rgba(184,134,11,.28);color:var(--gold);
+  border-radius:3px;padding:.08rem .45rem;font-family:'Cinzel',serif;
+  font-size:.68rem;letter-spacing:.04em}
+.bkt{display:block;text-align:center;padding:.55rem;
+  font-family:'Cinzel',serif;font-size:.72rem;letter-spacing:.1em;color:var(--muted);cursor:pointer;
+  border-top:1px solid var(--border);background:rgba(21,16,10,.02);transition:color .18s}
+.bkt:hover{color:var(--red)}
+
+/* ─── FOOTER ─── */
+footer{text-align:center;padding:2.8rem 1.5rem;background:var(--ink);
+  color:rgba(246,238,221,.4);font-size:.82rem;font-style:italic}
+footer .disc{max-width:700px;margin:0 auto;line-height:1.9}
+footer strong{color:var(--gold-l);font-style:normal}
+.fzh{font-family:'Noto Serif SC',serif;font-size:1.6rem;color:rgba(184,134,11,.3);
+  display:block;margin-bottom:1rem;letter-spacing:.4em}
+
+.mbtn-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:.35rem;vertical-align:middle;flex-shrink:0}
+
+@media(max-width:680px){
+  .msig{margin-left:0;text-align:left}
+  .dgrid{grid-template-columns:repeat(2,1fr)}
+  .tw{-webkit-overflow-scrolling:touch}
+  table{min-width:560px}
+}
+@media(max-width:420px){.dgrid{grid-template-columns:1fr}}
+
+/* ══════════════════════════════════════════════
+   WIDGET — ASSISTENTE DE DIAGNÓSTICO MTC
+   ══════════════════════════════════════════════ */
+#fab {
+  position:fixed; bottom:28px; right:28px;
+  width:56px; height:56px; border-radius:50%;
+  background:var(--ink);
+  border:2px solid var(--gold);
+  cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 20px rgba(21,16,10,.35), 0 0 0 0 rgba(184,134,11,0);
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, background .2s;
+  z-index:9999;
+}
+#fab:hover {
+  transform:scale(1.08); background:#1e160d;
+  box-shadow:0 6px 26px rgba(21,16,10,.4), 0 0 0 5px rgba(184,134,11,.12);
+}
+#fab:active { transform:scale(.95); }
+#fab.idle-pulse { animation:fabPulse 3s 2s ease-in-out 3; }
+@keyframes fabPulse {
+  0%,100%{ box-shadow:0 4px 20px rgba(21,16,10,.35), 0 0 0 0 rgba(184,134,11,.0); }
+  50%     { box-shadow:0 4px 20px rgba(21,16,10,.35), 0 0 0 9px rgba(184,134,11,.18); }
+}
+#fab-badge {
+  position:absolute; top:-4px; right:-4px;
+  width:16px; height:16px; border-radius:50%;
+  background:var(--red); border:2px solid var(--paper); display:none;
+}
+#fab-icon-open, #fab-icon-close { position:absolute; transition:opacity .2s, transform .2s; }
+#fab-icon-close { opacity:0; transform:rotate(-90deg); }
+
+#chat-widget {
+  position:fixed; bottom:96px; right:28px; width:410px;
+  background:var(--paper); border:1px solid var(--border); border-radius:4px;
+  box-shadow:0 16px 48px rgba(21,16,10,.22), 0 3px 10px rgba(21,16,10,.1);
+  display:flex; flex-direction:column;
+  max-height:82vh; min-height:0; z-index:9998; overflow:hidden;
+  transform-origin:bottom right;
+  transform:scale(.88) translateY(16px); opacity:0; pointer-events:none;
+  transition:transform .32s cubic-bezier(.34,1.2,.64,1), opacity .22s;
+}
+#chat-widget.open { transform:scale(1) translateY(0); opacity:1; pointer-events:all; }
+
+.w-header {
+  background:var(--ink); color:var(--paper);
+  padding:.9rem 1.2rem .8rem;
+  display:flex; align-items:center; gap:.9rem;
+  flex-shrink:0; position:relative; overflow:hidden;
+}
+.w-header::after {
+  content:'診'; font-family:'Noto Serif SC',serif;
+  font-size:5.5rem; color:rgba(255,255,255,.04);
+  position:absolute; right:.8rem; top:50%; transform:translateY(-50%);
+  pointer-events:none; line-height:1;
+}
+.w-header-bar { width:3px; height:40px; border-radius:2px; background:var(--gold-l); flex-shrink:0; }
+.w-header-text { flex:1; }
+.w-header-title { font-family:'Cinzel',serif; font-size:.95rem; font-weight:600; letter-spacing:.04em; color:var(--paper); line-height:1.2; }
+.w-header-sub { font-family:'Cinzel',serif; font-size:.62rem; letter-spacing:.14em; color:rgba(246,238,221,.38); margin-top:.18rem; }
+.w-status { display:flex; align-items:center; gap:.35rem; position:relative; z-index:1; }
+.w-status-dot { width:6px; height:6px; border-radius:50%; background:#5db87a; box-shadow:0 0 5px rgba(93,184,122,.6); animation:blink 2.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.45} }
+.w-status-txt { font-family:'Cinzel',serif; font-size:.6rem; letter-spacing:.1em; color:rgba(246,238,221,.35); }
+.w-close { background:none; border:none; cursor:pointer; color:rgba(246,238,221,.35); padding:3px; transition:color .18s; position:relative; z-index:1; flex-shrink:0; }
+.w-close:hover { color:rgba(246,238,221,.8); }
+
+.w-phases { background:rgba(21,16,10,.05); border-bottom:1px solid var(--border); padding:.38rem 1.2rem; display:flex; gap:0; flex-shrink:0; }
+.w-phase { flex:1; text-align:center; font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.08em; color:rgba(21,16,10,.28); padding:.28rem .2rem; border-bottom:2px solid transparent; transition:all .28s; white-space:nowrap; }
+.w-phase.active { color:var(--red); border-bottom-color:var(--red); }
+.w-phase.done   { color:var(--jade); border-bottom-color:var(--jade); }
+
+#w-messages { flex:1; overflow-y:auto; min-height:0; padding:1rem 1.1rem .6rem; display:flex; flex-direction:column; gap:.75rem; scroll-behavior:smooth; }
+#w-messages::-webkit-scrollbar { width:3px; }
+#w-messages::-webkit-scrollbar-track { background:transparent; }
+#w-messages::-webkit-scrollbar-thumb { background:rgba(200,169,122,.3); border-radius:2px; }
+
+.w-msg { max-width:88%; animation:msgIn .28s ease forwards; }
+@keyframes msgIn { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
+.w-msg-ai  { align-self:flex-start; }
+.w-msg-user{ align-self:flex-end; }
+
+.w-sender { font-family:'Cinzel',serif; font-size:.56rem; letter-spacing:.1em; margin-bottom:.28rem; padding-left:1px; }
+.w-msg-ai .w-sender   { color:var(--red); }
+.w-msg-user .w-sender { color:var(--muted); text-align:right; padding-right:1px; padding-left:0; }
+
+.w-bubble { padding:.65rem .9rem; border-radius:3px; font-size:.9rem; line-height:1.6; }
+.w-msg-ai .w-bubble  { background:#fdf8f1; border:1px solid var(--border); border-left:3px solid var(--red); box-shadow:0 2px 8px var(--shadow); color:var(--ink); }
+.w-msg-user .w-bubble{ background:var(--ink); color:var(--paper); }
+
+.w-typing { display:flex; align-items:center; gap:3px; padding:.65rem .9rem; background:#fdf8f1; border:1px solid var(--border); border-left:3px solid var(--red); border-radius:3px; width:fit-content; box-shadow:0 2px 8px var(--shadow); }
+.w-typing span { width:5px; height:5px; border-radius:50%; background:var(--gold); animation:typBounce 1.1s infinite; opacity:.7; }
+.w-typing span:nth-child(2){ animation-delay:.14s; }
+.w-typing span:nth-child(3){ animation-delay:.28s; }
+@keyframes typBounce { 0%,60%,100%{transform:translateY(0);opacity:.7} 30%{transform:translateY(-5px);opacity:1} }
+
+.w-protocol { background:#fdf8f1; border:1px solid var(--border); border-left:3px solid var(--red); border-radius:3px; overflow:hidden; box-shadow:0 3px 14px var(--shadow); }
+.w-proto-head { background:var(--ink); color:var(--paper); padding:.65rem .9rem; display:flex; align-items:center; gap:.7rem; position:relative; overflow:hidden; }
+.w-proto-head::after { content:attr(data-zh); font-family:'Noto Serif SC',serif; font-size:3rem; color:rgba(255,255,255,.05); position:absolute; right:.7rem; top:50%; transform:translateY(-50%); pointer-events:none; line-height:1; }
+.w-proto-bar { width:3px; height:32px; border-radius:2px; background:var(--gold-l); flex-shrink:0; }
+.w-proto-pattern { font-family:'Cinzel',serif; font-size:.82rem; font-weight:600; letter-spacing:.03em; line-height:1.3; }
+.w-proto-pattern small { font-family:'Noto Serif SC',serif; font-size:.78rem; color:var(--gold-l); display:block; font-weight:400; margin-top:.1rem; }
+.w-proto-rationale { padding:.6rem .9rem; font-style:italic; font-size:.83rem; color:var(--muted); line-height:1.65; border-bottom:1px solid rgba(200,169,122,.3); background:rgba(21,16,10,.03); }
+
+.w-point { padding:.52rem .9rem; border-bottom:1px solid rgba(200,169,122,.2); transition:background .14s; }
+.w-point:last-of-type{ border-bottom:none; }
+.w-point:hover{ background:rgba(184,134,11,.04); }
+.w-point-header { display:flex; align-items:baseline; gap:.45rem; flex-wrap:wrap; margin-bottom:.22rem; }
+.w-point-code { font-family:'Cinzel',serif; font-size:.72rem; font-weight:700; color:var(--red); background:rgba(139,26,26,.07); border:1px solid rgba(139,26,26,.18); padding:.05rem .38rem; border-radius:3px; }
+.w-point-name-pt { font-size:.84rem; font-weight:500; color:var(--ink); }
+.w-point-name-zh { font-family:'Noto Serif SC',serif; font-size:.8rem; color:var(--gold); }
+.w-point-name-py { font-size:.72rem; color:var(--muted); font-style:italic; }
+.w-point-loc { font-size:.78rem; color:var(--muted); line-height:1.45; margin-bottom:.18rem; }
+.w-point-loc::before { content:'↳ '; color:var(--gold); }
+.w-point-action { font-size:.75rem; color:var(--jade); font-style:italic; }
+.w-point-link { display:inline-flex; align-items:center; gap:3px; font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.06em; color:var(--red); text-decoration:none; margin-top:.18rem; opacity:.55; transition:opacity .18s; }
+.w-point-link:hover{ opacity:1; }
+
+.w-proto-tec { padding:.5rem .9rem .6rem; border-top:1px solid rgba(200,169,122,.25); background:rgba(21,16,10,.025); }
+.w-proto-tec-label { font-family:'Cinzel',serif; font-size:.62rem; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; margin-bottom:.25rem; }
+.w-proto-tec-val { font-size:.8rem; color:#3d2c18; line-height:1.55; }
+.w-proto-tec-badge { display:inline-block; margin-top:.35rem; background:rgba(184,134,11,.1); border:1px solid rgba(184,134,11,.28); color:var(--gold); border-radius:3px; padding:.07rem .45rem; font-family:'Cinzel',serif; font-size:.65rem; letter-spacing:.04em; }
+.w-disclaimer { padding:.5rem .9rem .55rem; font-style:italic; font-size:.73rem; color:var(--muted); line-height:1.5; border-top:1px solid rgba(200,169,122,.2); }
+.w-disclaimer strong { font-style:normal; color:var(--red); font-size:.7rem; }
+
+.w-input-area { padding:.6rem .9rem .75rem; border-top:1px solid var(--border); background:var(--paper2); flex-shrink:0; }
+.w-suggestions { display:flex; flex-wrap:wrap; gap:.3rem; margin-bottom:.55rem; }
+.w-chip { background:rgba(184,134,11,.1); border:1px solid rgba(184,134,11,.28); color:var(--gold-l); padding:.18rem .7rem; border-radius:20px; font-family:'Cinzel',serif; font-size:.65rem; letter-spacing:.04em; cursor:pointer; transition:all .18s; }
+.w-chip:hover{ background:rgba(184,134,11,.2); border-color:rgba(184,134,11,.5); }
+.w-input-row { display:flex; gap:.45rem; align-items:flex-end; }
+#w-input { flex:1; border:1px solid var(--border); border-radius:3px; padding:.5rem .85rem; font-family:'EB Garamond',serif; font-size:.92rem; color:var(--ink); background:var(--paper); resize:none; min-height:36px; max-height:90px; outline:none; line-height:1.45; transition:border-color .18s, box-shadow .18s; }
+#w-input:focus { border-color:var(--gold); box-shadow:0 0 0 2px rgba(184,134,11,.1); }
+#w-input::placeholder { color:rgba(21,16,10,.3); font-style:italic; }
+#w-send { background:var(--ink); border:1px solid var(--gold); border-radius:3px; width:36px; height:36px; cursor:pointer; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:background .18s, transform .12s; }
+#w-send:hover  { background:#1e160d; }
+#w-send:active { transform:scale(.93); }
+#w-send:disabled { background:rgba(21,16,10,.15); border-color:var(--border); cursor:not-allowed; }
+.w-footer-row { display:flex; justify-content:flex-end; margin-top:.38rem; }
+#w-reset { background:none; border:none; cursor:pointer; font-family:'Cinzel',serif; font-size:.58rem; letter-spacing:.08em; color:rgba(21,16,10,.3); transition:color .18s; }
+#w-reset:hover{ color:var(--red); }
+
+@media(max-width:480px){
+  #chat-widget{ width:calc(100vw - 20px); right:10px; bottom:84px; }
+  #fab{ right:14px; bottom:18px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-hanzi">經絡</div>
+  <div class="h-inner">
+    <span class="h-zh">經絡穴位</span>
+    <h1>Atlas de Acupressura & Digitopressão</h1>
+    <div class="h-div"></div>
+    <p>Meridianos · Pontos · Nomenclaturas · Indicações Terapêuticas</p>
+    <div class="h-tags">
+      <span>14 Meridianos</span><span>+360 Pontos</span>
+      <span>MTC</span><span>Acupressura</span><span>Shiatsu · Tui Na</span>
+    </div>
+  </div>
+</header>
+
+<div class="intro">
+  <p>Este atlas reúne os <strong>14 meridianos principais</strong> da Medicina Tradicional Chinesa com pontos, localizações, nomenclaturas em <strong>chinês, português e inglês</strong>, e indicações terapêuticas. Os diagramas mostram o trajeto de cada meridiano com todos os pontos e direção do fluxo de Qi.</p>
+</div>
+
+<div class="sec-t"><h2>Guia de Técnicas de Digitopressão</h2></div>
+<div class="guide-wrap">
+  <div class="guide-grid">
+    <div class="guide-card">
+      <h3>Pressão Estática</h3>
+      <p>A técnica mais comum. Aplica-se pressão contínua e sustentada sobre o ponto, sem movimento circular nem deslizamento.</p>
+      <ul>
+        <li><strong>Ferramenta:</strong> polegar, indicador ou três dedos juntos</li>
+        <li><strong>Ângulo:</strong> perpendicular à pele (90°) na maioria dos pontos</li>
+        <li><strong>Intensidade:</strong> leve (face, crânio), média (membros), firme (pontos de perna e costas)</li>
+        <li><strong>Duração típica:</strong> 30 a 120 segundos por ponto</li>
+      </ul>
+      <p class="note">Sensação correta: peso agradável, leve formigamento ou irradiação — nunca dor aguda.</p>
+    </div>
+    <div class="guide-card">
+      <h3>Pressão Circular</h3>
+      <p>Combina pressão com movimento rotatório suave. A direção do círculo determina o efeito energético.</p>
+      <ul>
+        <li><strong>Horário (↻):</strong> tonifica — estimula, aquece, fortalece o Qi</li>
+        <li><strong>Anti-horário (↺):</strong> seda — acalma, dispersa, reduz excesso</li>
+        <li><strong>Velocidade:</strong> 1 círculo a cada 2–3 segundos</li>
+        <li><strong>Raio:</strong> pequeno (2–5 mm) — não deslizar sobre a pele</li>
+      </ul>
+      <p class="note">Usada especialmente em E36, IG4, F3, VG4, VC6 e pontos abdominais.</p>
+    </div>
+    <div class="guide-card">
+      <h3>Pressão Intermitente</h3>
+      <p>Aplica e libera a pressão em ciclos rítmicos. Estimula a circulação local e pontos de emergência.</p>
+      <ul>
+        <li><strong>Ritmo padrão:</strong> 3 segundos de pressão / 1 segundo de liberação</li>
+        <li><strong>Emergência:</strong> pressão firme rápida, repetida (C9, PC9, VG26)</li>
+        <li><strong>Efeito:</strong> mais estimulante que a estática; ativa pontos Jing-Poço</li>
+      </ul>
+      <p class="note">Pelliscamento (pinça entre polegar e indicador) é uma variante para pontos nas extremidades.</p>
+    </div>
+    <div class="guide-card">
+      <h3>Ângulo e Direção</h3>
+      <p>O ângulo de pressão pode direcionar o estímulo ao longo do trajeto do meridiano.</p>
+      <ul>
+        <li><strong>90° (perpendicular):</strong> ação local e geral — uso mais comum</li>
+        <li><strong>45° em direção ao fluxo:</strong> tonifica (ex: P7 em direção ao cotovelo)</li>
+        <li><strong>45° contra o fluxo:</strong> seda e dispersa</li>
+        <li><strong>Pontos dorsais (Shu):</strong> sempre oblíquo 45° em direção à coluna</li>
+      </ul>
+      <p class="note">Em pontos de face e crânio, sempre usar pressão leve e perpendicular.</p>
+    </div>
+    <div class="guide-card">
+      <h3>Intensidade e Dosagem</h3>
+      <p>A intensidade correta varia por região, condição do paciente e objetivo terapêutico.</p>
+      <ul>
+        <li><strong>Leve:</strong> face, crânio, pescoço, sobre vasos — 1 a 2 kg/cm²</li>
+        <li><strong>Média:</strong> antebraço, perna, abdome — 2 a 4 kg/cm²</li>
+        <li><strong>Firme:</strong> costas, glúteos, perna (B40, E36, VB34) — 4 a 6 kg/cm²</li>
+        <li><strong>Frequência:</strong> 1 a 3 vezes ao dia; aguda: até 4×; crônica: 2×</li>
+      </ul>
+      <p class="note">Idosos, crianças e pessoas debilitadas: sempre começar com intensidade leve.</p>
+    </div>
+    <div class="guide-card">
+      <h3>Sequência e Protocolo</h3>
+      <p>Para uma sessão eficaz, respeite a ordem e os princípios fundamentais.</p>
+      <ul>
+        <li><strong>Início:</strong> pontos distais (extremidades) → pontos proximais (tronco)</li>
+        <li><strong>Número:</strong> 3 a 6 pontos por sessão; não exceder 8 em automassagem</li>
+        <li><strong>Respiração:</strong> pressionar na expiração, aliviar na inspiração</li>
+        <li><strong>Hidratação:</strong> beber água após a sessão</li>
+        <li><strong>Repouso:</strong> 10 minutos de repouso após sessão intensa</li>
+      </ul>
+      <p class="note">Em condições agudas, aplicar 2–3× ao dia. Condições crônicas: 1–2× ao dia por 10–30 dias.</p>
+    </div>
+    <div class="guide-card">
+      <h3>Contra­indicações Gerais</h3>
+      <ul>
+        <li>Gestação — evitar IG4, BP6, VB21, B60, B67, SP8</li>
+        <li>Pele lesionada, queimaduras, infecções locais</li>
+        <li>Trombose venosa profunda</li>
+        <li>Marcapasso eletrônico (pontos torácicos)</li>
+        <li>Neoplasia ativa na região do ponto</li>
+        <li>Febre alta com infecção sistêmica</li>
+        <li>Osteoporose severa ou fraturas na região</li>
+        <li>Linfedema no membro afetado</li>
+      </ul>
+      <p class="note">Este material é educativo e não substitui avaliação de profissional habilitado.</p>
+    </div>
+    <div class="guide-card">
+      <h3>Pontos Fundamentais</h3>
+      <p>Os pontos mais usados na prática clínica ocidental e oriental, marcados com <strong style="color:var(--red)">★</strong> nas tabelas:</p>
+      <ul>
+        <li><strong>E36</strong> — tonificação geral, imunidade, digestão</li>
+        <li><strong>IG4</strong> — analgesia universal, face, cabeça</li>
+        <li><strong>BP6</strong> — ginecologia, insônia, digestão</li>
+        <li><strong>VC4</strong> — tonificação do Yuan Qi, reprodução</li>
+        <li><strong>VC6</strong> — Mar do Qi, fadiga, prolapso</li>
+        <li><strong>VG4</strong> — Fogo da Vida, lombar, Yang</li>
+        <li><strong>PC6</strong> — náusea, ansiedade, coração</li>
+        <li><strong>VB20</strong> — cabeça, pescoço, hipertensão</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="sec-t"><h2>Índice por Indicação Terapêutica</h2></div>
+<div class="idx-wrap">
+  <div class="idx-sbar">
+    <input type="text" id="idxInput" placeholder="Buscar por sintoma ou condição (ex: insônia, cefaleia, lombalgia)…" oninput="idxSearch()">
+  </div>
+  <div class="idx-cats" id="idxCats"></div>
+  <div class="idx-results" id="idxResults">
+    <p class="idx-empty">Digite uma condição ou selecione uma categoria acima.</p>
+  </div>
+</div>
+
+<div class="sec-t"><h2>Diagramas dos Meridianos</h2></div>
+<div class="dgrid" id="dgrid"></div>
+
+<div class="sec-t"><h2>Tabela de Pontos</h2></div>
+<div class="nav-s"><div class="mernav" id="mernav"></div></div>
+<div class="sbar">
+  <input type="text" id="si" placeholder="Buscar por ponto (E36), meridiano, indicação, sigla…" oninput="fa()">
+  <button onclick="cs()">Limpar</button>
+</div>
+<div class="leg">
+  <span class="leg-t">LEGENDA:</span>
+  <span class="li"><span class="lc" style="background:#8b1a1a"></span>Yin braço</span>
+  <span class="li"><span class="lc" style="background:#2d6a4f"></span>Yang braço</span>
+  <span class="li"><span class="lc" style="background:#7b3f00"></span>Yin perna</span>
+  <span class="li"><span class="lc" style="background:#1a3a5c"></span>Yang perna</span>
+  <span class="li"><span class="lc" style="background:#5a1a6e"></span>Vaso Extra</span>
+</div>
+<div class="content" id="mc"></div>
+
+<footer>
+  <span class="fzh">氣通則不痛</span>
+  <div class="disc">
+    <strong>Aviso Legal</strong> — Este atlas tem finalidade exclusivamente educativa e de referência. A digitopressão e a acupressura são práticas complementares que <em>não substituem</em> diagnóstico ou tratamento médico convencional. Gestantes devem evitar qualquer automassagem sem orientação de profissional habilitado.<br><br>
+    <strong>Contraindicações absolutas da acupressura:</strong> gestação (especialmente IG4, BP6, VB21, B60, B67); marcapasso eletrônico; neoplasia ativa na região do ponto; trombose venosa profunda (risco de deslocamento de coágulo); pele lesionada, queimaduras, feridas abertas ou infecções no local; fraturas ou osteoporose severa na região; linfedema em membro afetado; estado febril agudo com sinais de infecção sistêmica.<br><br>
+    <strong>Nota sobre moxabustão:</strong> Alguns pontos (ex.: VC8, B67) admitem moxabustão como técnica principal. Moxabustão é a aplicação de calor por combustão de artemísia — técnica distinta da pressão digital e que requer treinamento específico. Não confundir com acupressura.<br><br>
+    <em>Baseado nos cânones da Medicina Tradicional Chinesa.</em>
+  </div>
+</footer>
+
+<!-- ══ WIDGET — ASSISTENTE DE DIAGNÓSTICO MTC ══ -->
+<button id="fab" class="idle-pulse" title="Assistente de Diagnóstico MTC">
+  <div id="fab-icon-open">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold-l)" stroke-width="1.6">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 8v4M12 16h.01" stroke-linecap="round"/>
+      <path d="M8 3.93A10 10 0 0 1 12 2M3.93 8A10 10 0 0 1 2 12" stroke-width="1" opacity=".4"/>
+    </svg>
+  </div>
+  <div id="fab-icon-close">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--paper)" stroke-width="2">
+      <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div id="fab-badge"></div>
+</button>
+
+<div id="chat-widget">
+  <div class="w-header">
+    <div class="w-header-bar"></div>
+    <div class="w-header-text">
+      <div class="w-header-title">Assistente de Diagnóstico</div>
+      <div class="w-header-sub">MTC · ACUPRESSURA · APOIO CLÍNICO</div>
+    </div>
+    <div class="w-status">
+      <div class="w-status-dot"></div>
+      <div class="w-status-txt">ATIVO</div>
+    </div>
+    <button class="w-close" id="w-close">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="w-phases">
+    <div class="w-phase active" id="ph0">I · QUEIXA</div>
+    <div class="w-phase"        id="ph1">II · ANAMNESE</div>
+    <div class="w-phase"        id="ph2">III · PADRÃO</div>
+    <div class="w-phase"        id="ph3">IV · PROTOCOLO</div>
+  </div>
+  <div id="w-messages"></div>
+  <div class="w-input-area">
+    <div class="w-suggestions" id="w-chips"></div>
+    <div class="w-input-row">
+      <textarea id="w-input" placeholder="Descreva seus sintomas…" rows="1"></textarea>
+      <button id="w-send">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--paper)" stroke-width="2">
+          <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="w-footer-row">
+      <button id="w-reset">↺ nova consulta</button>
+    </div>
+  </div>
+</div>
+<!-- ══ FIM WIDGET ══ -->
+
+<script>
+/* ══════════════════════════════════════════════════════
+   MERIDIAN DIAGRAMS
+   ══════════════════════════════════════════════════════ */
+const pc = (x,y,r,C,key) => {
+  const isKey = key === true;
+  return `<circle cx="${x}" cy="${y}" r="${isKey ? r+1.2 : r}"
+    fill="${C}" stroke="rgba(255,255,255,0.9)" stroke-width="${isKey?1.4:1}"/>`;
+};
+const lbl = (x,y,t,col,sz) =>
+  `<text x="${x}" y="${y}" fill="${col||'#180e06'}"
+    font-size="${sz||7}" font-family="'EB Garamond',serif" font-weight="700"
+    letter-spacing="0">${t}</text>`;
+const mpath = (d,C,w) =>
+  `<path d="${d}" stroke="${C}" stroke-width="${w||2.6}"
+    fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+const ref = (d,op) =>
+  `<path d="${d}" stroke="#9a7c58" stroke-width="0.55"
+    fill="none" stroke-dasharray="3,4" opacity="${op||0.45}"/>`;
+const reg = (x,y,t) =>
+  `<text x="${x}" y="${y}" fill="#9a7c58"
+    font-size="6.2" font-family="'Cinzel',serif"
+    letter-spacing="0.08em" opacity="0.7">${t}</text>`;
+const arrow = (x,y,dx,dy,C) => {
+  const len = Math.sqrt(dx*dx+dy*dy)||1;
+  const nx=dx/len, ny=dy/len;
+  const px=-ny, py=nx;
+  const tip = `${x+nx*6},${y+ny*6}`;
+  const b1  = `${x+px*3.5},${y+py*3.5}`;
+  const b2  = `${x-px*3.5},${y-py*3.5}`;
+  return `<polygon points="${tip} ${b1} ${b2}" fill="${C}" opacity="0.85"/>`;
+};
+
+const LM = {
+  head:    ref('M72,4 Q90,0 108,4 Q124,10 126,20 Q128,32 124,40 Q118,50 108,54 Q90,58 72,54 Q60,48 58,40 Q56,30 58,20 Q62,10 72,4'),
+  neck:    ref('M78,54 Q90,58 102,54 L104,68 Q90,72 76,68 Z'),
+  shoulder:ref('M20,72 L160,72'),
+  chest:   ref('M32,90 L148,90'),
+  ribend:  ref('M28,118 Q90,112 152,118'),
+  navel:   ref('M38,128 L142,128'),
+  hip:     ref('M36,156 L144,156'),
+  knee:    ref('M50,198 L130,198'),
+  ankle:   ref('M54,240 L126,240'),
+  armL:    ref('M20,72 Q16,100 16,128 Q16,156 18,178 Q18,192 20,210'),
+  armR:    ref('M160,72 Q164,100 164,128 Q164,156 162,178 Q162,192 160,210'),
+  legL:    ref('M54,156 Q50,180 50,198 Q50,220 52,240 Q52,256 52,270'),
+  legR:    ref('M126,156 Q130,180 130,198 Q130,220 128,240 Q128,256 128,270'),
+};
+const ANT = [LM.head,LM.neck,LM.shoulder,LM.chest,LM.ribend,LM.navel,LM.hip,LM.knee,LM.ankle,LM.armL,LM.armR,LM.legL,LM.legR].join('');
+const POST_LM = [LM.shoulder,LM.chest,LM.ribend,LM.navel,LM.hip,LM.knee,LM.ankle,LM.armL,LM.armR,LM.legL,LM.legR].join('')
+  + ref('M72,4 Q90,0 108,4 Q124,10 126,20 Q128,32 124,40 Q118,50 108,54 Q90,58 72,54 Q60,48 58,40 Q56,30 58,20 Q62,10 72,4')
+  + ref('M80,10 Q90,14 100,14 Q100,30 100,50',0.3);
+const ARM_ANT = [LM.shoulder,LM.armL,LM.armR].join('');
+
+const REGS = {
+  pu:  [reg(3,68,'TÓRAX'),reg(3,100,'BRAÇO'),reg(3,145,'ANTEBRAÇO'),reg(3,200,'MÃO')],
+  ig:  [reg(130,68,'TÓRAX'),reg(130,95,'BRAÇO'),reg(130,145,'ANTEBRAÇO'),reg(130,205,'MÃO'),reg(80,18,'FACE')],
+  e:   [reg(118,22,'FACE'),reg(118,78,'TÓRAX'),reg(118,122,'ABDOME'),reg(118,170,'COXA'),reg(118,218,'PERNA'),reg(118,260,'PÉ')],
+  bp:  [reg(3,170,'PERNA'),reg(3,122,'COXA'),reg(3,78,'ABDOME'),reg(3,60,'TÓRAX')],
+  c:   [reg(3,68,'AXILAS'),reg(3,100,'BRAÇO'),reg(3,155,'ANTEBRAÇO'),reg(3,202,'MÃO')],
+  id:  [reg(132,68,'ESCÁPULA'),reg(132,110,'BRAÇO'),reg(132,155,'ANTEBRAÇO'),reg(132,205,'MÃO'),reg(80,18,'FACE')],
+  b:   [reg(106,20,'CABEÇA'),reg(106,80,'DORSO'),reg(106,148,'LOMBAR'),reg(106,175,'GLÚTEO'),reg(106,215,'PERNA'),reg(106,258,'PÉ')],
+  r:   [reg(3,260,'PLANTA'),reg(3,220,'TORNOZELO'),reg(3,170,'PERNA'),reg(3,122,'COXA'),reg(3,80,'ABDOME'),reg(3,40,'TÓRAX')],
+  pc:  [reg(3,78,'TÓRAX'),reg(3,108,'BRAÇO'),reg(3,155,'ANTEBRAÇO'),reg(3,200,'MÃO')],
+  th:  [reg(130,78,'OMBRO'),reg(130,115,'BRAÇO'),reg(130,155,'ANTEBRAÇO'),reg(130,200,'MÃO'),reg(80,18,'CABEÇA')],
+  vb:  [reg(118,22,'CABEÇA'),reg(118,78,'TÓRAX'),reg(118,130,'QUADRIL'),reg(118,180,'COXA'),reg(118,230,'PERNA'),reg(118,260,'PÉ')],
+  f:   [reg(3,258,'PÉ'),reg(3,210,'PERNA'),reg(3,160,'COXA'),reg(3,112,'ABDOME'),reg(3,62,'TÓRAX')],
+  vg:  [reg(106,22,'CABEÇA'),reg(106,80,'DORSO'),reg(106,140,'LOMBAR'),reg(106,200,'SACRO')],
+  vc:  [reg(3,22,'FACE'),reg(3,68,'TÓRAX'),reg(3,122,'ABDOME'),reg(3,190,'PELVE')],
+};
+
+function buildSVG(m) {
+  const vb = '0 0 180 280';
+  const bg = `<rect width="180" height="280" fill="#f8f2e8"/>
+    <rect width="180" height="280" fill="url(#gridpat)"/>`;
+  const defs = `<defs>
+    <pattern id="gridpat" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M10,0 L0,0 L0,10" fill="none" stroke="#c8a97a" stroke-width="0.18" opacity="0.35"/>
+    </pattern>
+  </defs>`;
+  const C = m.color;
+  let lms = '', mer = '', pts = '';
+
+  switch(m.id) {
+    case 'pu':
+      lms = ARM_ANT + [LM.chest,LM.ribend,LM.navel].join('');
+      mer = mpath(`M40,78 Q30,82 22,90 Q16,100 15,114 Q14,126 15,140 Q16,150 17,162 Q17,172 16,182 Q15,190 13,202`, C);
+      mer += arrow(15,136, 0,14, C);
+      pts = [pc(40,78,4.5,C,true),lbl(43,77,'P1','#8b1a1a'),pc(30,82,3,C),lbl(22,80,'P2'),pc(21,92,3,C),lbl(13,90,'P3'),pc(16,106,3,C),lbl(7,104,'P4'),pc(15,120,4,C,true),lbl(6,118,'P5'),pc(15,134,3,C),lbl(6,132,'P6'),pc(15,146,4.5,C,true),lbl(6,145,'P7','#8b1a1a'),pc(16,158,3,C),lbl(7,157,'P8'),pc(16,168,4.5,C,true),lbl(7,167,'P9','#8b1a1a'),pc(15,178,3,C),lbl(6,177,'P10'),pc(13,202,4,C,true),lbl(3,201,'P11','#8b1a1a')].join('');
+      break;
+    case 'ig':
+      lms = ARM_ANT + [LM.chest,LM.ribend].join('');
+      mer = mpath(`M166,202 Q165,190 164,178 Q163,164 162,150 Q161,136 159,122 Q156,108 150,96 Q142,84 132,76 Q122,68 112,62 Q103,55 98,46 Q94,36 92,24`, C);
+      mer += arrow(162,158, -1,-14, C);
+      pts = [pc(166,202,4,C,true),lbl(168,202,'IG1'),pc(164,182,3,C),lbl(166,181,'IG2'),pc(163,168,3,C),lbl(165,167,'IG3'),pc(162,154,4.5,C,true),lbl(164,153,'IG4','#8b1a1a'),pc(161,140,3,C),lbl(163,139,'IG5'),pc(160,128,3,C),lbl(162,127,'IG6'),pc(159,116,3,C),lbl(161,115,'IG7'),pc(157,105,3,C),lbl(159,104,'IG8'),pc(154,95,3,C),lbl(156,94,'IG9'),pc(149,86,3,C),lbl(151,85,'IG10'),pc(140,76,4.5,C,true),lbl(142,75,'IG11','#8b1a1a'),pc(130,72,3,C),lbl(132,70,'IG12'),pc(120,66,3,C),lbl(122,65,'IG13'),pc(111,61,3,C),lbl(113,60,'IG14'),pc(102,56,3.5,C),lbl(104,55,'IG15'),pc(96,48,3,C),lbl(98,47,'IG16'),pc(93,37,3,C),lbl(94,35,'IG17'),pc(92,26,3.5,C),lbl(94,25,'IG18'),pc(92,18,3,C),lbl(94,17,'IG19'),pc(92,10,4,C,true),lbl(83,9,'IG20','#8b1a1a')].join('');
+      break;
+    case 'e':
+      lms = ANT;
+      mer = mpath(`M108,20 Q112,28 112,38 Q111,48 108,58 Q110,70 112,82 Q113,94 112,106 Q111,118 110,130 Q109,142 109,154 Q109,168 110,182 Q110,196 110,210 Q110,222 110,236 Q110,250 110,262 Q110,272 110,278`, C);
+      mer += arrow(110,168, 0,14, C);
+      pts = [pc(108,20,3.5,C,true),lbl(110,19,'E1'),pc(112,30,3,C),lbl(114,29,'E2'),pc(112,38,3,C),lbl(114,37,'E3'),pc(110,46,3,C),lbl(112,45,'E4'),pc(109,54,3,C),lbl(111,53,'E5'),pc(109,60,3,C),lbl(111,59,'E6'),pc(109,66,3,C),lbl(111,65,'E7'),pc(110,74,3,C),lbl(112,73,'E8'),pc(112,82,3,C),lbl(114,81,'E9'),pc(112,90,3,C),lbl(114,89,'E12'),pc(112,106,3.5,C),lbl(114,105,'E18'),pc(110,118,3.5,C,true),lbl(112,117,'E25','#1a3a5c'),pc(110,130,3,C),lbl(112,129,'E28'),pc(110,142,3,C),lbl(112,141,'E30'),pc(110,154,3,C),lbl(112,153,'E31'),pc(110,168,3,C),lbl(112,167,'E32'),pc(110,178,3.5,C),lbl(112,177,'E34'),pc(110,188,3,C),lbl(112,187,'E35'),pc(110,198,5,C,true),lbl(112,204,'E36','#8b1a1a'),pc(110,212,3.5,C,true),lbl(112,211,'E40','#1a3a5c'),pc(110,224,3,C),lbl(112,223,'E41'),pc(110,238,3,C),lbl(112,237,'E44'),pc(110,278,3.5,C,true),lbl(102,277,'E45','#8b1a1a')].join('');
+      break;
+    case 'bp':
+      lms = ANT;
+      mer = mpath(`M58,278 Q56,268 55,256 Q54,244 54,232 Q54,218 55,204 Q56,190 56,176 Q56,162 56,148 Q57,134 57,120 Q57,106 58,92 Q59,80 60,70 Q62,62 64,54`, C);
+      mer += arrow(56,176, 0,-14, C);
+      pts = [pc(58,278,3.5,C,true),lbl(46,277,'BP1'),pc(56,264,3,C),lbl(44,263,'BP2'),pc(55,252,3.5,C),lbl(43,251,'BP3'),pc(54,240,3.5,C),lbl(43,239,'BP4'),pc(54,228,3,C),lbl(43,227,'BP5'),pc(54,214,4.5,C,true),lbl(42,213,'BP6','#8b1a1a'),pc(55,202,3,C),lbl(43,201,'BP7'),pc(55,190,3.5,C),lbl(43,189,'BP8'),pc(55,178,4.5,C,true),lbl(43,177,'BP9','#7b3f00'),pc(56,164,4,C,true),lbl(44,163,'BP10'),pc(56,152,3,C),lbl(44,151,'BP11'),pc(56,140,3,C),lbl(44,139,'BP12'),pc(57,126,3,C),lbl(44,125,'BP14'),pc(57,118,3.5,C),lbl(44,117,'BP15'),pc(57,108,3,C),lbl(44,107,'BP16'),pc(59,88,3,C),lbl(46,87,'BP18'),pc(60,76,3,C),lbl(47,75,'BP19'),pc(62,64,3,C),lbl(49,63,'BP20'),pc(64,54,4,C,true),lbl(52,52,'BP21','#8b1a1a')].join('');
+      break;
+    case 'c':
+      lms = ARM_ANT + LM.chest;
+      mer = mpath(`M40,72 Q28,78 20,90 Q14,104 13,118 Q12,132 13,146 Q14,158 15,170 Q15,180 14,190 Q13,198 12,208`, C);
+      mer += arrow(13,140, 0,14, C);
+      pts = [pc(40,72,4,C,true),lbl(42,71,'C1'),pc(26,82,3,C),lbl(18,80,'C2'),pc(19,94,4,C,true),lbl(10,92,'C3'),pc(13,110,3,C),lbl(4,108,'C4'),pc(13,122,3,C),lbl(4,120,'C5'),pc(13,134,3,C),lbl(4,132,'C6'),pc(13,148,4.5,C,true),lbl(4,147,'C7','#8b1a1a'),pc(14,162,3,C),lbl(5,160,'C8'),pc(12,208,4,C,true),lbl(3,207,'C9')].join('');
+      break;
+    case 'id':
+      lms = POST_LM + ARM_ANT;
+      mer = mpath(`M166,208 Q165,196 164,182 Q163,168 161,154 Q158,140 154,126 Q149,112 142,100 Q134,88 124,78 Q114,68 106,58 Q100,48 96,36 Q93,24 92,14`, C);
+      mer += arrow(160,158, -3,-14, C);
+      pts = [pc(166,208,4,C,true),lbl(168,208,'ID1'),pc(165,194,3,C),lbl(167,193,'ID2'),pc(164,178,4,C,true),lbl(166,177,'ID3','#2d6a4f'),pc(162,164,3,C),lbl(164,163,'ID4'),pc(160,150,3,C),lbl(162,149,'ID5'),pc(157,137,3,C),lbl(159,136,'ID6'),pc(153,124,3,C),lbl(155,123,'ID7'),pc(148,112,4,C,true),lbl(150,111,'ID8'),pc(142,100,3.5,C),lbl(144,99,'ID9'),pc(134,90,3,C),lbl(136,89,'ID10'),pc(124,78,4,C,true),lbl(126,77,'ID11'),pc(116,70,3,C),lbl(118,69,'ID12'),pc(110,62,3,C),lbl(112,61,'ID13'),pc(104,56,3,C),lbl(106,55,'ID14'),pc(99,48,3,C),lbl(101,47,'ID15'),pc(96,40,3,C),lbl(97,38,'ID16'),pc(94,30,3,C),lbl(95,28,'ID17'),pc(93,20,3.5,C),lbl(94,18,'ID18'),pc(92,14,4,C,true),lbl(82,12,'ID19','#2d6a4f')].join('');
+      break;
+    case 'b':
+      lms = POST_LM;
+      mer = mpath(`M94,8 Q94,18 94,30 Q94,44 95,58 Q95,72 95,86 Q95,100 95,114 Q95,128 95,142 Q94,156 93,170 Q92,184 91,198 Q90,212 89,226 Q88,240 87,252 Q86,262 85,272`, C);
+      mer += `<path d="M100,64 Q100,78 100,92 Q100,106 99,120 Q98,132 97,144" stroke="${C}" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-dasharray="4,3" opacity="0.55"/>`;
+      mer += arrow(93,170, -1,14, C);
+      pts = [pc(94,8,3.5,C,true),lbl(96,7,'B1'),pc(94,18,3,C),lbl(96,17,'B2'),pc(94,32,3,C),lbl(96,31,'B10'),pc(95,46,3,C),lbl(97,45,'B11'),pc(95,56,3.5,C,true),lbl(97,55,'B13','#1a3a5c'),pc(95,64,3,C),lbl(97,63,'B14'),pc(95,72,3.5,C,true),lbl(97,71,'B15','#1a3a5c'),pc(95,80,3,C),lbl(97,79,'B17'),pc(95,86,3.5,C,true),lbl(97,85,'B18','#1a3a5c'),pc(95,92,3,C),lbl(97,91,'B19'),pc(95,100,3.5,C,true),lbl(97,99,'B20','#1a3a5c'),pc(95,108,3,C),lbl(97,107,'B21'),pc(95,114,3.5,C,true),lbl(97,113,'B23','#1a3a5c'),pc(95,122,3,C),lbl(97,121,'B25'),pc(95,130,3,C),lbl(97,129,'B27'),pc(95,138,3,C),lbl(97,137,'B28'),pc(94,148,3,C),lbl(96,147,'B32'),pc(93,158,3.5,C),lbl(95,157,'B36'),pc(92,170,4.5,C,true),lbl(82,169,'B40','#8b1a1a'),pc(91,184,3,C),lbl(93,183,'B55'),pc(90,198,4,C,true),lbl(80,197,'B57','#1a3a5c'),pc(89,212,3,C),lbl(91,211,'B58'),pc(88,226,3.5,C),lbl(90,225,'B60'),pc(87,240,3,C),lbl(89,239,'B62'),pc(85,272,4,C,true),lbl(75,271,'B67')].join('');
+      break;
+    case 'r':
+      lms = ANT;
+      mer = mpath(`M82,276 Q81,264 80,252 Q79,240 79,226 Q79,212 80,198 Q80,184 80,170 Q80,156 80,142 Q80,128 80,114 Q81,100 82,86 Q83,74 84,62 Q85,52 87,42 Q89,32 92,22`, C);
+      mer += arrow(80,170, 0,-14, C);
+      pts = [pc(82,276,4.5,C,true),lbl(70,275,'R1','#8b1a1a'),pc(81,260,3,C),lbl(70,259,'R2'),pc(80,246,4,C,true),lbl(69,245,'R3','#7b3f00'),pc(79,236,3,C),lbl(68,235,'R4'),pc(79,228,3,C),lbl(68,227,'R5'),pc(79,216,4,C,true),lbl(68,215,'R6'),pc(79,204,3.5,C),lbl(68,203,'R7'),pc(80,192,3,C),lbl(68,191,'R8'),pc(80,180,3,C),lbl(68,179,'R9'),pc(80,168,4,C,true),lbl(68,167,'R10'),pc(80,156,3,C),lbl(68,155,'R11'),pc(80,144,3,C),lbl(68,143,'R12'),pc(80,132,3,C),lbl(68,131,'R13'),pc(80,120,3,C),lbl(68,119,'R14'),pc(80,108,3,C),lbl(68,107,'R15'),pc(81,96,3,C),lbl(69,95,'R16'),pc(82,84,3,C),lbl(70,83,'R17'),pc(83,74,3,C),lbl(71,73,'R18'),pc(85,62,3,C),lbl(72,61,'R22'),pc(88,50,3,C),lbl(75,49,'R25'),pc(92,22,4,C,true),lbl(80,21,'R27')].join('');
+      break;
+    case 'pc':
+      lms = ARM_ANT + LM.chest;
+      mer = mpath(`M56,76 Q44,82 34,94 Q27,108 26,122 Q25,136 26,150 Q27,162 27,174 Q27,184 26,194 Q25,202 24,212`, C);
+      mer += arrow(26,144, 0,14, C);
+      pts = [pc(56,76,3.5,C,true),lbl(58,75,'PC1'),pc(42,86,3,C),lbl(34,84,'PC2'),pc(32,98,4,C,true),lbl(22,96,'PC3'),pc(27,112,3,C),lbl(18,110,'PC4'),pc(26,126,3.5,C),lbl(17,124,'PC5'),pc(26,140,4.5,C,true),lbl(17,139,'PC6','#8b1a1a'),pc(26,154,4,C,true),lbl(17,153,'PC7','#8b1a1a'),pc(26,168,3,C),lbl(17,166,'PC8'),pc(24,212,4,C,true),lbl(14,211,'PC9')].join('');
+      break;
+    case 'th':
+      lms = POST_LM + ARM_ANT;
+      mer = mpath(`M140,212 Q141,200 141,186 Q140,172 138,158 Q135,144 131,130 Q126,116 120,104 Q113,92 105,82 Q97,72 91,62 Q87,50 85,38 Q83,28 82,18`, C);
+      mer += arrow(137,162, -3,-14, C);
+      pts = [pc(140,212,4,C,true),lbl(142,212,'TH1'),pc(141,200,3,C),lbl(143,199,'TH2'),pc(141,188,3.5,C),lbl(143,187,'TH3'),pc(140,174,3,C),lbl(142,173,'TH4'),pc(138,160,4.5,C,true),lbl(140,159,'TH5','#2d6a4f'),pc(136,148,3.5,C),lbl(138,147,'TH6'),pc(134,138,3,C),lbl(136,137,'TH7'),pc(132,128,3,C),lbl(134,127,'TH8'),pc(129,116,3,C),lbl(131,115,'TH9'),pc(124,106,4,C,true),lbl(126,105,'TH10'),pc(117,96,3,C),lbl(119,95,'TH11'),pc(111,86,3,C),lbl(113,85,'TH12'),pc(104,76,3.5,C),lbl(106,75,'TH13'),pc(96,68,4,C,true),lbl(86,66,'TH14'),pc(89,58,3,C),lbl(80,57,'TH15'),pc(86,46,3,C),lbl(77,44,'TH16'),pc(84,36,4,C,true),lbl(74,34,'TH17','#2d6a4f'),pc(83,26,3,C),lbl(74,25,'TH18'),pc(82,18,3,C),lbl(73,17,'TH21'),pc(82,10,3.5,C,true),lbl(73,9,'TH23','#2d6a4f')].join('');
+      break;
+    case 'vb':
+      lms = ANT;
+      mer = mpath(`M110,10 Q118,16 120,26 Q121,38 117,48 Q113,58 113,70 Q113,82 115,94 Q117,106 118,118 Q119,130 119,142 Q119,156 118,170 Q116,184 116,198 Q116,212 116,226 Q116,240 116,254 Q116,264 116,274`, C);
+      mer += arrow(116,200, 0,14, C);
+      pts = [pc(110,10,3.5,C,true),lbl(112,9,'VB1'),pc(118,18,3,C),lbl(120,17,'VB2'),pc(120,28,3,C),lbl(122,27,'VB3'),pc(121,38,3,C),lbl(122,37,'VB4'),pc(119,48,3,C),lbl(121,47,'VB7'),pc(114,58,4,C,true),lbl(116,57,'VB20','#8b1a1a'),pc(114,68,3.5,C,true),lbl(116,67,'VB21','#8b1a1a'),pc(114,80,3,C),lbl(116,79,'VB22'),pc(114,92,3,C),lbl(116,91,'VB24'),pc(116,104,3,C),lbl(118,103,'VB25'),pc(117,116,3.5,C),lbl(119,115,'VB26'),pc(118,128,3,C),lbl(120,127,'VB29'),pc(118,140,4.5,C,true),lbl(120,139,'VB30','#1a3a5c'),pc(118,154,3,C),lbl(120,153,'VB31'),pc(118,166,3,C),lbl(120,165,'VB33'),pc(117,176,5,C,true),lbl(119,182,'VB34','#8b1a1a'),pc(116,190,3,C),lbl(118,189,'VB36'),pc(116,202,3.5,C),lbl(118,201,'VB37'),pc(116,214,3,C),lbl(118,213,'VB38'),pc(116,226,3.5,C),lbl(118,225,'VB39'),pc(116,240,3.5,C,true),lbl(118,239,'VB40'),pc(116,252,3,C),lbl(118,251,'VB41'),pc(116,264,3,C),lbl(118,263,'VB43'),pc(116,274,4,C,true),lbl(106,273,'VB44')].join('');
+      break;
+    case 'f':
+      lms = ANT;
+      mer = mpath(`M70,274 Q69,262 68,250 Q67,238 67,224 Q67,210 68,196 Q68,182 68,168 Q68,154 68,140 Q69,126 70,112 Q71,100 72,88 Q73,78 75,68 Q77,58 80,48 Q82,40 85,32`, C);
+      mer += arrow(68,180, 0,-14, C);
+      pts = [pc(70,274,4,C,true),lbl(58,273,'F1'),pc(68,260,3.5,C,true),lbl(57,259,'F2'),pc(67,246,4.5,C,true),lbl(56,245,'F3','#8b1a1a'),pc(67,232,3,C),lbl(56,231,'F4'),pc(67,218,3.5,C),lbl(56,217,'F5'),pc(68,204,3,C),lbl(56,203,'F6'),pc(68,190,3,C),lbl(56,189,'F7'),pc(68,176,4,C,true),lbl(56,175,'F8','#7b3f00'),pc(69,162,3,C),lbl(57,161,'F9'),pc(70,148,3,C),lbl(58,147,'F10'),pc(70,136,3,C),lbl(58,135,'F11'),pc(71,122,3,C),lbl(59,121,'F12'),pc(73,96,4,C,true),lbl(61,95,'F13'),pc(85,32,4.5,C,true),lbl(73,31,'F14','#8b1a1a')].join('');
+      break;
+    case 'vg':
+      lms = POST_LM;
+      mer = mpath(`M90,276 Q90,264 90,252 Q90,238 90,224 Q90,210 90,196 Q90,182 90,168 Q90,154 90,140 Q90,126 90,112 Q90,98 90,84 Q90,70 90,56 Q90,44 90,32 Q90,22 90,14 Q90,8 90,4`, C);
+      mer += arrow(90,196, 0,-14, C);
+      pts = [pc(90,276,3.5,C,true),lbl(79,275,'VG1'),pc(90,260,3,C),lbl(79,259,'VG2'),pc(90,248,3,C),lbl(79,247,'VG3'),pc(90,234,4,C,true),lbl(79,233,'VG4','#5a1a6e'),pc(90,220,3,C),lbl(79,219,'VG5'),pc(90,208,3,C),lbl(79,207,'VG6'),pc(90,196,3,C),lbl(79,195,'VG7'),pc(90,184,3,C),lbl(79,183,'VG8'),pc(90,172,3.5,C),lbl(79,171,'VG9'),pc(90,160,3,C),lbl(79,159,'VG10'),pc(90,148,3,C),lbl(79,147,'VG11'),pc(90,136,3,C),lbl(79,135,'VG12'),pc(90,124,3,C),lbl(79,123,'VG13'),pc(90,112,4.5,C,true),lbl(79,111,'VG14','#5a1a6e'),pc(90,100,3,C),lbl(79,99,'VG15'),pc(90,88,3.5,C),lbl(79,87,'VG16'),pc(90,76,3,C),lbl(79,75,'VG17'),pc(90,64,3,C),lbl(79,63,'VG18'),pc(90,52,3,C),lbl(79,51,'VG19'),pc(90,40,5.5,C,true),lbl(78,38,'VG20','#8b1a1a'),pc(90,28,3,C),lbl(79,27,'VG21'),pc(90,18,3,C),lbl(79,17,'VG22'),pc(90,10,3,C),lbl(79,9,'VG23'),pc(90,4,3.5,C,true),lbl(79,3,'VG24')].join('');
+      break;
+    case 'vc':
+      lms = ANT;
+      mer = mpath(`M90,276 Q90,264 90,252 Q90,238 90,224 Q90,210 90,196 Q90,182 90,168 Q90,154 90,140 Q90,126 90,112 Q90,98 90,84 Q90,70 90,58 Q90,46 90,34 Q90,22 90,12 Q90,6 90,2`, C);
+      mer += arrow(90,182, 0,-14, C);
+      pts = [pc(90,276,3.5,C,true),lbl(78,275,'VC1'),pc(90,258,3,C),lbl(78,257,'VC2'),pc(90,244,3.5,C),lbl(78,243,'VC3'),pc(90,230,4,C,true),lbl(78,229,'VC4','#5a1a6e'),pc(90,218,3,C),lbl(78,217,'VC5'),pc(90,206,3.5,C,true),lbl(78,205,'VC6','#5a1a6e'),pc(90,196,3,C),lbl(78,195,'VC7'),pc(90,184,4,C,true),lbl(78,183,'VC8'),pc(90,172,3,C),lbl(78,171,'VC9'),pc(90,160,3,C),lbl(78,159,'VC10'),pc(90,148,3,C),lbl(78,147,'VC11'),pc(90,134,5,C,true),lbl(78,133,'VC12','#8b1a1a'),pc(90,122,3,C),lbl(78,121,'VC13'),pc(90,110,3.5,C),lbl(78,109,'VC14'),pc(90,100,3,C),lbl(78,99,'VC15'),pc(90,90,3,C),lbl(78,89,'VC16'),pc(90,78,4.5,C,true),lbl(78,77,'VC17','#5a1a6e'),pc(90,68,3,C),lbl(78,67,'VC18'),pc(90,58,3,C),lbl(78,57,'VC19'),pc(90,48,3,C),lbl(78,47,'VC20'),pc(90,38,3,C),lbl(78,37,'VC21'),pc(90,28,3.5,C),lbl(78,27,'VC22'),pc(90,18,3,C),lbl(78,17,'VC23'),pc(90,8,4,C,true),lbl(78,7,'VC24')].join('');
+      break;
+  }
+
+  const regs_svg = (REGS[m.id]||[]).join('');
+  return `<svg viewBox="${vb}" width="150" height="233" xmlns="http://www.w3.org/2000/svg">
+    ${defs}${bg}${lms}${regs_svg}${mer}${pts}
+  </svg>`;
+}
+
+const MERIDIANS = [
+  {id:"pu",name:"Pulmão",chinese:"手太陰肺經",zh:"肺",ptSigla:"P",enSigla:"LU",color:"#8b1a1a",element:"Metal",orgao:"Yin (Braço)",fluxo:"Do tórax à ponta do polegar",totalPontos:11,desc:"Governa o Qi e a respiração, distribui o Wei Qi (energia defensiva), controla a pele e os pêlos, abre-se no nariz. Emoção: tristeza.",points:[{num:1,name:"Zhongfu",pt:"P1",en:"LU1",loc:"1º espaço intercostal, 6 cun lateral à linha média",ind:["Tosse","Asma","Dor torácica","Pneumonia","Bronquite"],tec:{tipo:"Pressão firme perpendicular",ferramenta:"dedo indicador ou polegar",movimento:"estática sustentada",protocolo:"60–90 s · 1–2×/dia"}},{num:2,name:"Yunmen",pt:"P2",en:"LU2",loc:"Fossa infraclavicular, 6 cun lateral",ind:["Tosse","Dor de ombro","Bronquite"],tec:{tipo:"Pressão suave perpendicular",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:3,name:"Tianfu",pt:"P3",en:"LU3",loc:"Face medial do braço, 3 cun abaixo da prega axilar",ind:["Epistaxe","Tosse com sangue","Disfagia"],tec:{tipo:"Pressão média perpendicular",ferramenta:"polegar",movimento:"estática ou leve circular",protocolo:"60 s · 2×/dia"}},{num:4,name:"Xiabai",pt:"P4",en:"LU4",loc:"Face medial do braço, 4 cun abaixo da prega axilar",ind:["Tosse","Dor no braço","Palpitações"],tec:{tipo:"Pressão média perpendicular",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:5,name:"Chize",pt:"P5",en:"LU5",loc:"Dobra do cotovelo, bordo radial do tendão do bíceps",ind:["Tosse","Asma","Hemoptise","Febre","Dor no cotovelo"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática ou circular lenta",protocolo:"60–90 s · 2×/dia"}},{num:6,name:"Kongzui",pt:"P6",en:"LU6",loc:"7 cun acima do punho, face palmar",ind:["Hemoptise","Tosse aguda","Garganta","Epistaxe"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:7,name:"Lieque",pt:"P7",en:"LU7",loc:"1,5 cun acima do punho, processo estiloide radial",ind:["Cefaleia","Rigidez de nuca","Tosse","Asma","Rinite","Paralisia facial","⚠ abre Ren Mai — ponto Luo do Pulmão / encontro dos 3 Yin do braço"],tec:{tipo:"Pressão oblíqua 45° em direção ao cotovelo",ferramenta:"polegar",movimento:"intermitente (3 s on/1 s off)",protocolo:"90 s · 2–3×/dia"}},{num:8,name:"Jingqu",pt:"P8",en:"LU8",loc:"1 cun acima do punho, sobre a artéria radial",ind:["Tosse","Asma","Dor de garganta"],tec:{tipo:"Pressão perpendicular suave",ferramenta:"polegar",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:9,name:"Taiyuan",pt:"P9",en:"LU9",loc:"Prega do punho, lateral à artéria radial",ind:["Tosse","Asma","Hemoptise","Pulso fraco — ponto Yuan / influente dos vasos"],tec:{tipo:"Pressão perpendicular suave-média",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:10,name:"Yuji",pt:"P10",en:"LU10",loc:"Ponto médio do 1º metacarpo, região tenar",ind:["Dor de garganta","Febre","Tosse","Rouquidão"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática ou pequenos círculos",protocolo:"60 s · 2×/dia"}},{num:11,name:"Shaoshang",pt:"P11",en:"LU11",loc:"Canto radial da unha do polegar",ind:["Dor de garganta","Febre alta","Tonsilite","Ressuscitação"],tec:{tipo:"Pelliscamento suave (pinça)",ferramenta:"polegar + indicador",movimento:"intermitente (2 s on/1 s off)",protocolo:"30–60 s · 1–2×/dia"}}]},
+  {id:"ig",name:"Intestino Grosso",chinese:"手陽明大腸經",zh:"大腸",ptSigla:"IG",enSigla:"LI",color:"#2d6a4f",element:"Metal",orgao:"Yang (Braço)",fluxo:"Da ponta do indicador ao canto nasal",totalPontos:20,desc:"Par yang do Pulmão. Trata afecções intestinais, cabeça, rosto, nariz e garganta.",points:[{num:1,name:"Shangyang",pt:"IG1",en:"LI1",loc:"Canto radial da unha do indicador",ind:["Dor de dente","Dor de garganta","Febre alta","Ressuscitação"],tec:{tipo:"Pelliscamento suave",ferramenta:"polegar + indicador",movimento:"intermitente",protocolo:"20–30 s · 1×/dia"}},{num:2,name:"Erjian",pt:"IG2",en:"LI2",loc:"Margem radial do 2º dedo, distal à art. MF",ind:["Dor de dente","Epistaxe","Febre"],tec:{tipo:"Pressão perpendicular leve",ferramenta:"polegar",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:3,name:"Sanjian",pt:"IG3",en:"LI3",loc:"Proximal à 2ª articulação MF, lado radial",ind:["Dor de dente","Dor de garganta","Dor nos olhos"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:4,name:"Hegu",pt:"IG4",en:"LI4",loc:"Dorso da mão, ponto médio do 2º metacarpo",ind:["★ Ponto Fundamental","Dor (analgésico universal)","Cefaleia","Dor de dente","Rinite","Gripe","Constipação","⚠ contraindicado na gestação"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática ou circular lenta",protocolo:"90–120 s · 2–3×/dia"}},{num:5,name:"Yangxi",pt:"IG5",en:"LI5",loc:"Tabaqueira anatômica, entre os tendões",ind:["Cefaleia","Dor de dente","Tinnitus","Dor no punho"],tec:{tipo:"Pressão perpendicular ou oblíqua 45°",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:6,name:"Pianli",pt:"IG6",en:"LI6",loc:"3 cun acima de IG5",ind:["Epistaxe","Surdez","Edema — ponto Luo"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:7,name:"Wenliu",pt:"IG7",en:"LI7",loc:"5 cun acima de IG5",ind:["Cefaleia","Dor facial","Abscesso intestinal"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:8,name:"Xialian",pt:"IG8",en:"LI8",loc:"4 cun abaixo de IG11",ind:["Dor abdominal","Diarreia","Paralisia do antebraço"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:9,name:"Shanglian",pt:"IG9",en:"LI9",loc:"3 cun abaixo de IG11",ind:["Dor abdominal","Entorpecimento do braço"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:10,name:"Shousanli",pt:"IG10",en:"LI10",loc:"2 cun abaixo de IG11",ind:["Dor de dente","Paralisia do braço","Diarreia"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática ou circular",protocolo:"60 s · 2×/dia"}},{num:11,name:"Quchi",pt:"IG11",en:"LI11",loc:"Dobra lateral do cotovelo, extremidade radial",ind:["Febre","Hipertensão","Eczema","Urticária","Dor de cotovelo","Tonsilite — He-Mar"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"circular lenta (sentido horário para tonificar)",protocolo:"90–120 s · 2–3×/dia"}},{num:12,name:"Zhouliao",pt:"IG12",en:"LI12",loc:"1 cun acima e lateral a IG11",ind:["Dor e contratura do cotovelo"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:13,name:"Shouwuli",pt:"IG13",en:"LI13",loc:"3 cun acima de IG11",ind:["Contratura do braço","Gânglios linfáticos"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:14,name:"Binao",pt:"IG14",en:"LI14",loc:"Inserção do deltóide, 7 cun acima de IG11",ind:["Dor de ombro","Névralgia cervicobraquial"],tec:{tipo:"Pressão perpendicular ou oblíqua 45° para baixo",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:15,name:"Jianyu",pt:"IG15",en:"LI15",loc:"Acrômio, depressão anterior quando braço elevado",ind:["Dor de ombro","Urticária","Paralisia MS"],tec:{tipo:"Pressão oblíqua 45° inferior",ferramenta:"polegar",movimento:"estática com braço do paciente relaxado",protocolo:"60–90 s · 2×/dia"}},{num:16,name:"Jugu",pt:"IG16",en:"LI16",loc:"Depressão entre acrômio e clavícula",ind:["Dor de ombro e costas superiores"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:17,name:"Tianding",pt:"IG17",en:"LI17",loc:"Face lateral do pescoço, bordo posterior do ECM",ind:["Dor de garganta","Tosse","Laringite"],tec:{tipo:"Pressão perpendicular leve",ferramenta:"indicador",movimento:"estática — evitar compressão carotídea",protocolo:"20–30 s · 1×/dia"}},{num:18,name:"Futu",pt:"IG18",en:"LI18",loc:"Nível da maçã-de-adão, bordo posterior do ECM",ind:["Dor de garganta","Rouquidão","Bócio"],tec:{tipo:"Pressão perpendicular leve",ferramenta:"indicador",movimento:"estática — evitar carótida",protocolo:"20–30 s · 1×/dia"}},{num:19,name:"Kouheliao",pt:"IG19",en:"LI19",loc:"Abaixo da narina lateral",ind:["Desvio de boca","Rinite"],tec:{tipo:"Pressão perpendicular leve",ferramenta:"indicador",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:20,name:"Yingxiang",pt:"IG20",en:"LI20",loc:"Sulco nasolabial, à altura da asa do nariz",ind:["Rinite","Sinusite","Nariz entupido","Desvio da boca"],tec:{tipo:"Pressão oblíqua 45° em direção às narinas",ferramenta:"indicador",movimento:"circular pequena",protocolo:"60–90 s · 2–3×/dia"}}]},
+  {id:"e",name:"Estômago",chinese:"足陽明胃經",zh:"胃",ptSigla:"E",enSigla:"ST",color:"#1a3a5c",element:"Terra",orgao:"Yang (Perna)",fluxo:"Do olho ao 2º dedo do pé",totalPontos:45,desc:"O maior meridiano Yang. Governa a digestão e transformação dos alimentos em Qi e Sangue, nutre todo o corpo.",points:[{num:1,name:"Chengqi",pt:"E1",en:"ST1",loc:"Abaixo da pupila, entre globo ocular e órbita inferior",ind:["Problemas oculares","Miopia","Ptose palpebral"],tec:{tipo:"Pressão muito leve perpendicular",ferramenta:"indicador",movimento:"estática — nunca pressionar o globo ocular",protocolo:"20–30 s · 1×/dia"}},{num:2,name:"Sibai",pt:"E2",en:"ST2",loc:"1 cun abaixo de E1, forame infraorbitário",ind:["Dor ocular","Paralisia facial","Tinnitus"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"indicador",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:3,name:"Juliao",pt:"E3",en:"ST3",loc:"Abaixo da asa do nariz, alinhado com E2",ind:["Rinite","Paralisia facial","Dor de dente"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"indicador",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:4,name:"Dicang",pt:"E4",en:"ST4",loc:"Canto da boca",ind:["Desvio de boca","Paralisia facial","Sialorréia"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"indicador",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:5,name:"Daying",pt:"E5",en:"ST5",loc:"Ângulo da mandíbula",ind:["Paralisia facial","Dor de dente","Trismo"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"indicador",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:6,name:"Jiache",pt:"E6",en:"ST6",loc:"Masseter, 1 dedo acima do ângulo mandibular",ind:["Dor de dente","Paralisia facial","Trismo"],tec:{tipo:"Pressão perpendicular média",ferramenta:"indicador ou polegar",movimento:"estática ou circular",protocolo:"60 s · 2×/dia"}},{num:7,name:"Xiaguan",pt:"E7",en:"ST7",loc:"Borda inferior do arco zigomático",ind:["Dor de dente","ATM","Paralisia facial","Surdez"],tec:{tipo:"Pressão perpendicular leve-média",ferramenta:"indicador",movimento:"estática — boca levemente aberta",protocolo:"30–60 s · 2×/dia"}},{num:8,name:"Touwei",pt:"E8",en:"ST8",loc:"Linha temporal, 4,5 cun da linha média",ind:["Cefaleia frontal","Vertigem","Dor ocular"],tec:{tipo:"Pressão perpendicular leve",ferramenta:"indicador ou polegar",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:9,name:"Renying",pt:"E9",en:"ST9",loc:"Nível da maçã-de-adão, borda anterior do ECM",ind:["Hipertensão","Dor de garganta","Bócio","Asma"],tec:{tipo:"Pressão perpendicular muito leve",ferramenta:"indicador",movimento:"estática — nunca bilateral simultânea",protocolo:"20 s · 1×/dia"}},{num:10,name:"Shuitu",pt:"E10",en:"ST10",loc:"Borda anterior do ECM, entre E9 e E11",ind:["Tosse","Asma","Dor de garganta"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:11,name:"Qishe",pt:"E11",en:"ST11",loc:"Borda superior da clavícula, entre ECM",ind:["Dor de garganta","Rigidez de nuca","Asma"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:12,name:"Quepen",pt:"E12",en:"ST12",loc:"Fossa supraclavicular, 4 cun lateral",ind:["Tosse","Asma","Dor de garganta"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"indicador",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:13,name:"Qihu",pt:"E13",en:"ST13",loc:"Abaixo da clavícula, 4 cun lateral",ind:["Tosse","Dor torácica","Soluço"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:25,name:"Tianshu",pt:"E25",en:"ST25",loc:"2 cun lateral ao umbigo",ind:["Diarreia","Constipação","Dor abdominal","Dismenorreia — ponto Mu do IG"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar ou três dedos",movimento:"circular lenta",protocolo:"90 s · 2–3×/dia"}},{num:36,name:"Zusanli",pt:"E36",en:"ST36",loc:"3 cun abaixo de E35, 1 cun lateral à crista da tíbia",ind:["★ Ponto Fundamental","Tonificação geral","Digestão","Imunidade","Fadiga","Gastrite","Diarreia","Hipertensão","Anemia — He-Mar / ponto dos 10.000 males"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"circular horária (tonifica) ou anti-horária (seda)",protocolo:"2–3 min · 2–3×/dia"}},{num:40,name:"Fenglong",pt:"E40",en:"ST40",loc:"8 cun acima do maléolo externo, 2 cun lateral",ind:["Tosse com expectoração","Excesso de muco","Sensação de peso na cabeça","Tontura","Obesidade","Hiperlipidemia","Epilepsia","Agitação mental — ponto Luo do Estômago / transforma Fleuma (Tan)"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"circular lenta anti-horária (transforma fleuma)",protocolo:"90–120 s · 2×/dia"}},{num:44,name:"Neiting",pt:"E44",en:"ST44",loc:"Entre 2º e 3º dedos do pé",ind:["Dor de dente","Febre","Dor facial","Gastrite","Azia"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática ou pelliscamento",protocolo:"60 s · 2×/dia"}},{num:45,name:"Lidui",pt:"E45",en:"ST45",loc:"Canto lateral da unha do 2º dedo do pé",ind:["Febre alta","Plenitude epigástrica","Insônia"],tec:{tipo:"Pelliscamento suave",ferramenta:"polegar + indicador",movimento:"intermitente",protocolo:"20–30 s · 1×/dia"}}]},
+  {id:"bp",name:"Baço-Pâncreas",chinese:"足太陰脾經",zh:"脾",ptSigla:"BP",enSigla:"SP",color:"#7b3f00",element:"Terra",orgao:"Yin (Perna)",fluxo:"Da ponta do hálux ao tórax lateral",totalPontos:21,desc:"Governa a transformação e transporte dos alimentos, controla o sangue nos vasos, sustenta os órgãos (tonifica o Zhong Qi), domina a carne e os músculos.",points:[{num:1,name:"Yinbai",pt:"BP1",en:"SP1",loc:"Canto medial da unha do hálux",ind:["Sangramento uterino","Menorragia","Sonhos perturbadores"],tec:{tipo:"Pelliscamento suave",ferramenta:"polegar + indicador",movimento:"intermitente",protocolo:"30 s · 1–2×/dia"}},{num:3,name:"Taibai",pt:"BP3",en:"SP3",loc:"Posterior à art. MF do hálux",ind:["Distensão","Diarreia","Vômito — Yuan"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:4,name:"Gongsun",pt:"BP4",en:"SP4",loc:"1 cun posterior a BP3, base do 1º metatarso",ind:["Dor abdominal","Vômito","Diarreia","Irregularidade menstrual — abre Chong Mai"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:6,name:"Sanyinjiao",pt:"BP6",en:"SP6",loc:"3 cun acima do maléolo interno, borda posterior da tíbia",ind:["★ Ponto Fundamental","Insônia","Digestão","Ginecologia","Dismenorreia","Edema","Hipertensão","⚠ contraindicado na gestação — ponto de encontro dos 3 meridianos Yin da perna (BP, R, F)"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"circular lenta ou estática",protocolo:"90–120 s · 2–3×/dia"}},{num:8,name:"Diji",pt:"BP8",en:"SP8",loc:"3 cun abaixo de BP9",ind:["Dismenorreia intensa","Dor abdominal","Edema — Xi-Fenda"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:9,name:"Yinlingquan",pt:"BP9",en:"SP9",loc:"Depressão abaixo da cabeça medial da tíbia",ind:["Edema","Incontinência","Dismenorreia","Leucorreia","Dor de joelho — He-Mar"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática ou circular",protocolo:"90–120 s · 2–3×/dia"}},{num:10,name:"Xuehai",pt:"BP10",en:"SP10",loc:"2 cun acima da patela, vasto medial",ind:["Irregularidade menstrual","Eczema","Urticária","Prurido","Anemia"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"circular lenta anti-horária",protocolo:"90–120 s · 2×/dia"}},{num:21,name:"Dabao",pt:"BP21",en:"SP21",loc:"6º espaço intercostal, linha axilar média",ind:["Dor por todo o corpo","Fraqueza geral — Grande Luo do Baço"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}}]},
+  {id:"c",name:"Coração",chinese:"手少陰心經",zh:"心",ptSigla:"C",enSigla:"HT",color:"#8b1a1a",element:"Fogo",orgao:"Yin (Braço)",fluxo:"Do coração à ponta do mínimo",totalPontos:9,desc:"Governa o Sangue e os vasos, aloja o Shen (mente/consciência), manifesta-se na língua, reflete-se no rosto. Emoção: alegria desequilibrada.",points:[{num:1,name:"Jiquan",pt:"C1",en:"HT1",loc:"Centro da axila, sobre a artéria axilar",ind:["Opressão torácica","Palpitações","Dor precordial","Dor de braço","Depressão"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática — axila relaxada",protocolo:"60 s · 2×/dia"}},{num:3,name:"Shaohai",pt:"C3",en:"HT3",loc:"Dobra medial do cotovelo",ind:["Opressão torácica/dor precordial","Tremores","Dor de cotovelo","Depressão — He-Mar"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"circular lenta ou estática",protocolo:"60–90 s · 2×/dia"}},{num:5,name:"Tongli",pt:"C5",en:"HT5",loc:"1 cun acima de C7",ind:["Palpitações","Gagueira","Afasia","Menorragia — Luo"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:6,name:"Yinxi",pt:"C6",en:"HT6",loc:"0,5 cun acima de C7",ind:["Palpitações","Suor noturno","Hemoptise — Xi-Fenda"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:7,name:"Shenmen",pt:"C7",en:"HT7",loc:"Prega do punho, extremidade ulnar",ind:["Insônia","Ansiedade","Palpitações","Amnésia","Depressão","Epilepsia — Yuan / porta do Shen"],tec:{tipo:"Pressão perpendicular suave-média",ferramenta:"polegar",movimento:"circular lenta suave",protocolo:"90–120 s · 2–3×/dia"}},{num:9,name:"Shaochong",pt:"C9",en:"HT9",loc:"Canto radial da unha do mínimo",ind:["Febre alta","Ressuscitação","Dor no peito"],tec:{tipo:"Pelliscamento",ferramenta:"polegar + indicador",movimento:"intermitente forte — urgência",protocolo:"10–20 s · uso pontual"}}]},
+  {id:"id",name:"Intestino Delgado",chinese:"手太陽小腸經",zh:"小腸",ptSigla:"ID",enSigla:"SI",color:"#2d6a4f",element:"Fogo",orgao:"Yang (Braço)",fluxo:"Da ponta do mínimo ao rosto",totalPontos:19,desc:"Par yang do Coração. Separa o puro do impuro, trata afecções de pescoço, ombros, ouvidos e olhos.",points:[{num:1,name:"Shaoze",pt:"ID1",en:"SI1",loc:"Canto ulnar da unha do mínimo",ind:["Lactação insuficiente","Cefaleia","Febre","Mastite"],tec:{tipo:"Pelliscamento suave",ferramenta:"polegar + indicador",movimento:"intermitente",protocolo:"20–30 s · 1–2×/dia"}},{num:3,name:"Houxi",pt:"ID3",en:"SI3",loc:"Dobra da mão, bordo ulnar, metacarpo",ind:["Dor cervical","Lombalgia","Epilepsia","Suor noturno — abre Du Mai"],tec:{tipo:"Pressão oblíqua 45° em direção ao punho",ferramenta:"polegar",movimento:"estática ou intermitente",protocolo:"60–90 s · 2×/dia"}},{num:11,name:"Tianzong",pt:"ID11",en:"SI11",loc:"Centro da fossa infraescapular",ind:["Dor de ombro e escápula","Mastite"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar ou cotovelo",movimento:"circular lenta",protocolo:"60–90 s · 2×/dia"}},{num:19,name:"Tinggong",pt:"ID19",en:"SI19",loc:"Tragus auricular, depressão anterior",ind:["Surdez","Zumbido","Otite"],tec:{tipo:"Pressão leve perpendicular com boca levemente aberta",ferramenta:"indicador",movimento:"estática",protocolo:"30–60 s · 2×/dia"}}]},
+  {id:"b",name:"Bexiga",chinese:"足太陽膀胱經",zh:"膀胱",ptSigla:"B",enSigla:"BL",color:"#1a3a5c",element:"Água",orgao:"Yang (Perna)",fluxo:"Do canto interno do olho ao 5º dedo do pé",totalPontos:67,desc:"O mais longo meridiano. Percorre toda a coluna vertebral com os pontos Shu dorsais — janelas para todos os órgãos internos.",points:[{num:1,name:"Jingming",pt:"B1",en:"BL1",loc:"Canto interno do olho",ind:["Problemas oculares","Miopia","Conjuntivite"],tec:{tipo:"Pressão muito leve perpendicular",ferramenta:"indicador",movimento:"estática — nunca pressionar globo ocular",protocolo:"20 s · 1×/dia"}},{num:2,name:"Zanzhu",pt:"B2",en:"BL2",loc:"Extremidade medial da sobrancelha",ind:["Cefaleia frontal","Sinusite","Dor ocular"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"indicador ou polegar",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:10,name:"Tianzhu",pt:"B10",en:"BL10",loc:"1,3 cun lateral à linha média, nível de C1-C2",ind:["Dor de cabeça","Rigidez de nuca","Tontura"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"circular ou estática",protocolo:"60 s · 2×/dia"}},{num:13,name:"Feishu",pt:"B13",en:"BL13",loc:"1,5 cun lateral ao bordo inferior de D3",ind:["Tosse","Asma","Hemoptise","Rinite — Shu do Pulmão"],tec:{tipo:"Pressão oblíqua 45° medial (em direção à coluna)",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:15,name:"Xinshu",pt:"B15",en:"BL15",loc:"1,5 cun lateral ao bordo inferior de D5",ind:["Palpitações","Insônia","Amnésia","Epilepsia — Shu do Coração"],tec:{tipo:"Pressão oblíqua 45° medial",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:17,name:"Geshu",pt:"B17",en:"BL17",loc:"1,5 cun lateral ao bordo inferior de D7",ind:["Anemia","Soluço","Vômito","Suor noturno — influente do Sangue"],tec:{tipo:"Pressão oblíqua 45° medial",ferramenta:"polegar",movimento:"circular lenta",protocolo:"60–90 s · 2×/dia"}},{num:18,name:"Ganshu",pt:"B18",en:"BL18",loc:"1,5 cun lateral ao bordo inferior de D9",ind:["Dor de flanco","Problemas oculares","Tensão emocional — Shu do Fígado"],tec:{tipo:"Pressão oblíqua 45° medial",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:20,name:"Pishu",pt:"B20",en:"BL20",loc:"1,5 cun lateral ao bordo inferior de D11",ind:["Digestão fraca","Diarreia","Edema","Cansaço — Shu do Baço"],tec:{tipo:"Pressão oblíqua 45° medial",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:21,name:"Weishu",pt:"B21",en:"BL21",loc:"1,5 cun lateral ao bordo inferior de D12",ind:["Gastrite","Úlcera","Dor epigástrica — Shu do Estômago"],tec:{tipo:"Pressão oblíqua 45° medial",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:23,name:"Shenshu",pt:"B23",en:"BL23",loc:"1,5 cun lateral ao bordo inferior de L2",ind:["Lombalgia","Tinnitus","Impotência","Irregularidade menstrual","Urina frequente — Shu do Rim"],tec:{tipo:"Pressão oblíqua 45° medial ou perpendicular",ferramenta:"polegar ou cotovelo",movimento:"estática firme",protocolo:"2–3 min · 2×/dia"}},{num:32,name:"Ciliao",pt:"B32",en:"BL32",loc:"2º forame sacral",ind:["Dor lombar","Dismenorreia","Retenção urinária","Ciático"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática ou circular",protocolo:"90–120 s · 2×/dia"}},{num:40,name:"Weizhong",pt:"B40",en:"BL40",loc:"Centro da dobra poplítea",ind:["Lombalgia","Ciático","Espasmos de perna","Febre — He-Mar"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática ou circular anti-horária",protocolo:"90–120 s · 2–3×/dia"}},{num:57,name:"Chengshan",pt:"B57",en:"BL57",loc:"Ponto médio da panturrilha, abaixo da divisão do gastrocnêmio",ind:["Cãibras","Hemorroidas","Lombalgia","Obstipação"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática ou circular lenta",protocolo:"60–90 s · 2–3×/dia"}},{num:60,name:"Kunlun",pt:"B60",en:"BL60",loc:"Depressão entre maléolo externo e tendão de Aquiles",ind:["Lombalgia","Dor de cabeça","Rigidez de nuca","⚠ contraindicado na gestação"],tec:{tipo:"Pressão perpendicular média-firme",ferramenta:"polegar",movimento:"circular lenta",protocolo:"60–90 s · 2×/dia"}},{num:62,name:"Shenmai",pt:"B62",en:"BL62",loc:"Abaixo do maléolo externo",ind:["Insônia","Epilepsia","Dor de cabeça — abre Yang Qiao Mai"],tec:{tipo:"Pressão oblíqua 45° inferior",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:67,name:"Zhiyin",pt:"B67",en:"BL67",loc:"Canto lateral da unha do 5º dedo do pé",ind:["⚠ Feto transverso (moxabustão)","Cefaleia","Dor ocular"],tec:{tipo:"Pelliscamento — preferência moxabustão",ferramenta:"polegar + indicador",movimento:"intermitente",protocolo:"20–30 s · uso terapêutico"}}]},
+  {id:"r",name:"Rim",chinese:"足少陰腎經",zh:"腎",ptSigla:"R",enSigla:"KI",color:"#7b3f00",element:"Água",orgao:"Yin (Perna)",fluxo:"Da planta do pé ao tórax",totalPontos:27,desc:"Armazena a Essência (Jing), governa o crescimento, reprodução e desenvolvimento, domina os ossos e a medula, abre-se nas orelhas.",points:[{num:1,name:"Yongquan",pt:"R1",en:"KI1",loc:"1/3 anterior da planta do pé",ind:["Ressuscitação","Hipertensão","Ansiedade aguda","Coma","Cefaleia — Jing-Poço"],tec:{tipo:"Pressão firme perpendicular ou circular",ferramenta:"polegar ou nó do dedo",movimento:"circular horária",protocolo:"2–3 min · 2–3×/dia"}},{num:3,name:"Taixi",pt:"R3",en:"KI3",loc:"Depressão entre maléolo interno e tendão de Aquiles",ind:["Lombalgia","Tinnitus","Insônia","Impotência","Tosse crônica — Yuan do Rim"],tec:{tipo:"Pressão perpendicular média-firme",ferramenta:"polegar",movimento:"circular lenta",protocolo:"90–120 s · 2–3×/dia"}},{num:6,name:"Zhaohai",pt:"R6",en:"KI6",loc:"1 cun abaixo do maléolo interno",ind:["Insônia","Ansiedade","Boca seca","Irregularidade menstrual — abre Yin Qiao Mai"],tec:{tipo:"Pressão oblíqua 45° inferior",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:7,name:"Fuliu",pt:"R7",en:"KI7",loc:"2 cun acima de R3, borda anterior do tendão de Aquiles",ind:["Sudorese excessiva ou ausente","Edema","Lombalgia","Tonifica Rim-Yang"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:27,name:"Shufu",pt:"R27",en:"KI27",loc:"Abaixo da clavícula, 2 cun lateral à linha média",ind:["Tosse","Asma","Dor torácica","Náusea"],tec:{tipo:"Pressão perpendicular leve",ferramenta:"polegar ou indicador",movimento:"estática",protocolo:"30 s · 2×/dia"}}]},
+  {id:"pc",name:"Pericárdio",chinese:"手厥陰心包經",zh:"心包",ptSigla:"PC",enSigla:"PC",color:"#8b1a1a",element:"Fogo",orgao:"Yin (Braço)",fluxo:"Do tórax à ponta do dedo médio",totalPontos:9,desc:"Protege o Coração, governa a circulação sanguínea, aloja o Shen em seu aspecto relacional. Governa as emoções na relação com o outro.",points:[{num:3,name:"Quze",pt:"PC3",en:"PC3",loc:"Dobra do cotovelo, ulnar ao tendão do bíceps",ind:["Palpitações","Dor gástrica","Vômito","Febre — He-Mar"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática ou circular",protocolo:"60–90 s · 2×/dia"}},{num:4,name:"Ximen",pt:"PC4",en:"PC4",loc:"5 cun acima da prega do punho",ind:["Dor cardíaca aguda","Hemoptise","Angina — Xi-Fenda"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:6,name:"Neiguan",pt:"PC6",en:"PC6",loc:"2 cun acima da prega do punho, entre os dois tendões dos flexores",ind:["Náusea","Vômito","Enjoo de viagem","Náusea por quimioterapia e pós-operatório","Palpitações","Insônia","Ansiedade","Dor epigástrica","Angina — abre Yin Wei Mai"],tec:{tipo:"Pressão perpendicular suave-média",ferramenta:"polegar",movimento:"circular lenta horária",protocolo:"90–120 s · 3×/dia"}},{num:7,name:"Daling",pt:"PC7",en:"PC7",loc:"Centro da prega do punho, entre os dois tendões",ind:["Palpitações","Dor no punho","Insônia","Ansiedade — Yuan"],tec:{tipo:"Pressão perpendicular suave",ferramenta:"polegar",movimento:"estática ou circular muito leve",protocolo:"60–90 s · 2–3×/dia"}},{num:8,name:"Laogong",pt:"PC8",en:"PC8",loc:"Centro da palma, entre 3º e 4º metacarpos",ind:["Náusea","Vômito","Palpitações","Calor na palma da mão","Boca seca","Insolação (calor excessivo)","Ansiedade aguda"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"circular horária",protocolo:"60 s · 2×/dia"}},{num:9,name:"Zhongchong",pt:"PC9",en:"PC9",loc:"Ponta do dedo médio",ind:["Ressuscitação","Febre alta","Coma"],tec:{tipo:"Pelliscamento firme — urgência",ferramenta:"polegar + indicador",movimento:"intermitente",protocolo:"10–20 s · uso pontual"}}]},
+  {id:"th",name:"Triplo Aquecedor",chinese:"手少陽三焦經",zh:"三焦",ptSigla:"TH",enSigla:"TE",color:"#2d6a4f",element:"Fogo",orgao:"Yang (Braço)",fluxo:"Da ponta do anular à sobrancelha lateral",totalPontos:23,desc:"Governa a transformação e circulação dos fluidos nos três aquecedores (San Jiao), regula a temperatura corporal.",points:[{num:3,name:"Zhongzhu",pt:"TH3",en:"TE3",loc:"Dorso da mão, entre 4º e 5º metacarpos",ind:["Cefaleia","Tinnitus","Surdez","Dor de cotovelo"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}},{num:5,name:"Waiguan",pt:"TH5",en:"TE5",loc:"2 cun acima da prega do punho (dorso), entre rádio e ulna",ind:["Febre","Cefaleia","Tinnitus","Dor de ouvido — abre Yang Wei Mai"],tec:{tipo:"Pressão oblíqua 45° em direção ao cotovelo",ferramenta:"polegar",movimento:"estática ou intermitente",protocolo:"60–90 s · 2–3×/dia"}},{num:6,name:"Zhigou",pt:"TH6",en:"TE6",loc:"3 cun acima da prega do punho (dorso)",ind:["Constipação","Dor no flanco","Zumbido","Febre"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática ou circular",protocolo:"60 s · 2×/dia"}},{num:17,name:"Yifeng",pt:"TH17",en:"TE17",loc:"Atrás do lóbulo da orelha, depressão",ind:["Surdez","Tinnitus","Paralisia facial","Parotidite"],tec:{tipo:"Pressão oblíqua 45° anterior-inferior",ferramenta:"indicador",movimento:"circular muito leve",protocolo:"30–60 s · 2×/dia"}},{num:23,name:"Sizhukong",pt:"TH23",en:"TE23",loc:"Depressão na extremidade lateral da sobrancelha",ind:["Cefaleia","Dor ocular","Epilepsia","Espasmo palpebral"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"indicador",movimento:"estática ou pequena circular",protocolo:"20–30 s · 2×/dia"}}]},
+  {id:"vb",name:"Vesícula Biliar",chinese:"足少陽膽經",zh:"膽",ptSigla:"VB",enSigla:"GB",color:"#1a3a5c",element:"Madeira",orgao:"Yang (Perna)",fluxo:"Do canto externo do olho ao 4º dedo do pé",totalPontos:44,desc:"Governa a tomada de decisões, armazena a bile, influencia tendões e ligamentos, controla o Qi lateral do corpo.",points:[{num:1,name:"Tongziliao",pt:"VB1",en:"GB1",loc:"0,5 cun lateral ao canto externo do olho",ind:["Dor ocular","Cefaleia temporal","Visão turva"],tec:{tipo:"Pressão muito leve perpendicular",ferramenta:"indicador",movimento:"estática",protocolo:"20–30 s · 1×/dia"}},{num:20,name:"Fengchi",pt:"VB20",en:"GB20",loc:"Depressão entre trapézio e ECM, abaixo do occipital",ind:["Cefaleia","Rigidez de nuca","Hipertensão","Gripe","Tontura","Sinusite — ponto fundamental cabeça/pescoço"],tec:{tipo:"Pressão oblíqua 45° em direção ao olho oposto",ferramenta:"polegares",movimento:"circular ou estática",protocolo:"90–120 s · 2–3×/dia"}},{num:21,name:"Jianjing",pt:"VB21",en:"GB21",loc:"Ponto médio entre C7 e o acrômio",ind:["Dor de ombro e pescoço","Cefaleia","⚠ contraindicado na gestação"],tec:{tipo:"Pressão perpendicular firme descendente",ferramenta:"polegar",movimento:"estática ou circular",protocolo:"60–90 s · 2×/dia"}},{num:30,name:"Huantiao",pt:"VB30",en:"GB30",loc:"1/3 lateral entre grande trocânter e hiato sacral",ind:["Ciático","Dor no quadril","Paralisia MI","Lombalgia"],tec:{tipo:"Pressão firme perpendicular ou com cotovelo",ferramenta:"polegar/cotovelo",movimento:"estática",protocolo:"90–120 s · 2×/dia"}},{num:34,name:"Yanglingquan",pt:"VB34",en:"GB34",loc:"Depressão anterior e inferior à cabeça da fíbula",ind:["Dor de joelho","Ciático","Hipocondralgia","Boca amarga","Contracturas — ponto He-Mar da VB / influente dos Tendões e Ligamentos"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"circular lenta horária (tonifica tendões)",protocolo:"90–120 s · 2–3×/dia"}},{num:39,name:"Xuanzhong",pt:"VB39",en:"GB39",loc:"3 cun acima do maléolo externo, bordo anterior da fíbula",ind:["Rigidez de nuca","Ciático","Anemia","Tontura — influente da Medula"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:41,name:"Zulinqi",pt:"VB41",en:"GB41",loc:"Dorso do pé, entre 4º e 5º metatarsos",ind:["Cefaleia lateral","Dor nos seios","Irregularidade menstrual — abre Dai Mai"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}}]},
+  {id:"f",name:"Fígado",chinese:"足厥陰肝經",zh:"肝",ptSigla:"F",enSigla:"LR",color:"#7b3f00",element:"Madeira",orgao:"Yin (Perna)",fluxo:"Da ponta do hálux ao tórax lateral",totalPontos:14,desc:"Armazena e regula o Sangue, garante o livre fluxo do Qi em todo o corpo, domina os tendões, abre-se nos olhos, aloja o Hun.",points:[{num:2,name:"Xingjian",pt:"F2",en:"LR2",loc:"Entre 1º e 2º dedos do pé",ind:["Hipertensão","Irritabilidade","Cólicas menstruais","Insônia"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"circular anti-horária (seda)",protocolo:"60–90 s · 2×/dia"}},{num:3,name:"Taichong",pt:"F3",en:"LR3",loc:"Dorso do pé, entre 1º e 2º metatarsos",ind:["Cefaleia","Hipertensão","Irritabilidade","Depressão","Dismenorreia","Espasmos — Yuan do Fígado"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"circular anti-horária (seda Fígado) ou horária (tonifica)",protocolo:"90–120 s · 2–3×/dia"}},{num:8,name:"Ququan",pt:"F8",en:"LR8",loc:"Dobra medial do joelho, posterior ao côndilo medial femoral",ind:["Dor genital","Impotência","Leucorreia","Prurido vulvar — He-Mar"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"circular lenta ou estática",protocolo:"60–90 s · 2×/dia"}},{num:13,name:"Zhangmen",pt:"F13",en:"LR13",loc:"Ponta da 11ª costela flutuante",ind:["Distensão","Dor de flanco","Diarreia","Hipertensão — ponto Mu do Baço / influente dos Órgãos Zang"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"polegar",movimento:"estática",protocolo:"30–60 s · 2×/dia"}},{num:14,name:"Qimen",pt:"F14",en:"LR14",loc:"6º espaço intercostal, linha mamilar",ind:["Dor de flanco","Depressão","Distensão","Hepatite — ponto Mu do Fígado"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"polegar ou indicador",movimento:"estática",protocolo:"30–60 s · 2×/dia"}}]},
+  {id:"vg",name:"Vaso Governador",chinese:"督脈",zh:"督",ptSigla:"VG",enSigla:"GV",color:"#5a1a6e",element:"—",orgao:"Yang Extra",fluxo:"Do períneo ao lábio superior (linha posterior)",totalPontos:28,desc:"Mar dos meridianos Yang. Governa todos os Yang, nutre a medula espinhal e o cérebro, influencia o sistema nervoso central.",points:[{num:4,name:"Mingmen",pt:"VG4",en:"GV4",loc:"Abaixo do processo espinhoso de L2",ind:["★ Ponto Fundamental","Lombalgia crônica","Impotência","Membros frios","Diarreia — porta do Fogo da Vida"],tec:{tipo:"Pressão perpendicular firme ou circular horária",ferramenta:"polegar",movimento:"circular horária (tonifica Yang)",protocolo:"90–120 s · 2×/dia"}},{num:14,name:"Dazhui",pt:"VG14",en:"GV14",loc:"Abaixo do processo espinhoso de C7",ind:["Febre","Malária","Epilepsia","Rigidez de nuca","Tosse — reunião de todos os Yang"],tec:{tipo:"Pressão perpendicular firme",ferramenta:"polegar",movimento:"estática ou circular anti-horária (seda febre)",protocolo:"90–120 s · 2–3×/dia"}},{num:16,name:"Fengfu",pt:"VG16",en:"GV16",loc:"1 cun acima de VG15, fossa occipital",ind:["Dor de cabeça","Rigidez de nuca","Apoplexia","Vertigem"],tec:{tipo:"Pressão perpendicular leve",ferramenta:"indicador",movimento:"estática",protocolo:"20–30 s · 1×/dia"}},{num:20,name:"Baihui",pt:"VG20",en:"GV20",loc:"Ápice do crânio — cruzamento da linha média com a linha entre os ápices das orelhas",ind:["Cefaleia","Tontura","Prolapso","Insônia","Depressão","Hipertensão","Ressuscitação — o grande Yang do crânio"],tec:{tipo:"Pressão leve perpendicular ou circular horária",ferramenta:"polegar ou indicador",movimento:"circular muito leve",protocolo:"60–90 s · 2×/dia"}},{num:24,name:"Shenting",pt:"VG24",en:"GV24",loc:"0,5 cun posterior à linha capilar anterior",ind:["Cefaleia","Vertigem","Insônia","Epilepsia","Ansiedade"],tec:{tipo:"Pressão leve perpendicular",ferramenta:"polegar ou indicador",movimento:"estática",protocolo:"30 s · 2×/dia"}},{num:26,name:"Renzhong",pt:"VG26",en:"GV26",loc:"Terço superior do sulco nasolabial (filtro)",ind:["Ressuscitação","Desmaio","Coma","Distorção lombar aguda — ponto de emergência"],tec:{tipo:"Pressão perpendicular média",ferramenta:"polegar",movimento:"estática",protocolo:"60 s · 2×/dia"}}]},
+  {id:"vc",name:"Vaso Conceção",chinese:"任脈",zh:"任",ptSigla:"VC",enSigla:"CV",color:"#5a1a6e",element:"—",orgao:"Yin Extra",fluxo:"Do períneo ao lábio inferior (linha anterior)",totalPontos:24,desc:"Mar dos meridianos Yin. Governa todos os Yin, nutre o Útero e os órgãos reprodutores, controla a concepção e a energia nutritiva (Ying Qi).",points:[{num:3,name:"Zhongji",pt:"VC3",en:"CV3",loc:"4 cun abaixo do umbigo",ind:["Retenção urinária","Dismenorreia","Leucorreia — ponto Mu da Bexiga"],tec:{tipo:"Pressão leve-média perpendicular",ferramenta:"três dedos",movimento:"estática",protocolo:"60–90 s · 2×/dia"}},{num:4,name:"Guanyuan",pt:"VC4",en:"CV4",loc:"3 cun abaixo do umbigo",ind:["★ Ponto Fundamental","Fraqueza geral","Impotência","Irregularidade menstrual","Diarreia crônica","Prolapso","Infertilidade — grande tonificador do Yuan Qi"],tec:{tipo:"Pressão leve-média perpendicular",ferramenta:"três dedos ou palma",movimento:"circular horária lenta",protocolo:"2–3 min · 2×/dia"}},{num:6,name:"Qihai",pt:"VC6",en:"CV6",loc:"1,5 cun abaixo do umbigo",ind:["★ Ponto Fundamental","Fadiga geral","Impotência","Irregularidade menstrual","Prolapso — Mar do Qi"],tec:{tipo:"Pressão leve-média perpendicular",ferramenta:"três dedos ou palma",movimento:"circular horária lenta",protocolo:"2–3 min · 2×/dia"}},{num:8,name:"Shenque",pt:"VC8",en:"CV8",loc:"Centro do umbigo",ind:["Diarreia crônica","Prolapso","Choque","Frio no abdome","⚠ Apenas moxabustão ou calor suave com a palma aquecida. Nunca agulhar ou pressionar com força."],tec:{tipo:"⚠ Apenas moxabustão ou calor suave — NÃO pressionar",ferramenta:"palma aquecida (sem pressão) ou moxabustão indireta",movimento:"calor suave sobre o umbigo, sem contato compressivo",protocolo:"3–5 min de calor suave · 1–2×/dia"}},{num:12,name:"Zhongwan",pt:"VC12",en:"CV12",loc:"4 cun acima do umbigo",ind:["Gastrite","Úlcera","Distensão epigástrica","Vômito","Diarreia — ponto Mu do Estômago / influente dos Órgãos Fu"],tec:{tipo:"Pressão leve-média perpendicular",ferramenta:"três dedos ou palma",movimento:"circular horária lenta",protocolo:"90–120 s · 2–3×/dia"}},{num:17,name:"Danzhong",pt:"VC17",en:"CV17",loc:"Nível do 4º espaço intercostal (entre mamilos)",ind:["Dispneia","Palpitações","Lactação insuficiente","Ansiedade — ponto Mu do Pericárdio / influente do Qi"],tec:{tipo:"Pressão leve-média perpendicular",ferramenta:"três dedos ou palma",movimento:"estática ou circular horária",protocolo:"90 s · 2×/dia"}},{num:22,name:"Tiantu",pt:"VC22",en:"CV22",loc:"Centro da fossa supraesternal",ind:["Tosse","Asma","Dor de garganta","Soluço","Disfagia"],tec:{tipo:"Pressão leve oblíqua 45° inferior",ferramenta:"indicador",movimento:"estática — nunca pressão forte",protocolo:"30–60 s · 2×/dia"}}]}
+];
+
+/* ══ BUILD DIAGRAMS ══ */
+const dg = document.getElementById('dgrid');
+MERIDIANS.forEach(m => {
+  const c = document.createElement('div');
+  c.className = 'dcard';
+  c.onclick = () => {
+    filterByMeridian(m.id);
+    setTimeout(() => document.getElementById('mb-'+m.id)?.scrollIntoView({behavior:'smooth',block:'start'}), 80);
+  };
+  c.innerHTML = `
+    <div class="dcard-head">
+      <div class="dc-bar" style="background:${m.color}"></div>
+      <div class="dc-name">${m.name}</div>
+      <div class="dc-zh">${m.zh}</div>
+    </div>
+    <div class="dcard-svg">${buildSVG(m)}</div>
+    <div class="dcard-foot">
+      <span class="dc-spt">${m.ptSigla}</span>
+      <span style="color:var(--muted);font-size:.7rem">·</span>
+      <span class="dc-sen">${m.enSigla}</span>
+      <span class="dc-pts">${m.totalPontos} pts</span>
+    </div>`;
+  dg.appendChild(c);
+});
+
+/* ══ BUILD NAV ══ */
+const nav = document.getElementById('mernav');
+const allB = document.createElement('button');
+allB.className='mbtn active'; allB.textContent='Todos';
+allB.onclick=()=>{
+  document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('active'));
+  allB.classList.add('active');
+  document.querySelectorAll('.mblock').forEach(b=>b.classList.remove('hidden'));
+};
+nav.appendChild(allB);
+MERIDIANS.forEach(m=>{
+  const b=document.createElement('button');
+  b.className='mbtn'; b.dataset.mid=m.id;
+  b.innerHTML=`<span class="mbtn-dot" style="background:${m.color}"></span>${m.ptSigla}<span class="s">${m.name.split(' ')[0]}</span>`;
+  b.onclick=()=>{
+    document.querySelectorAll('.mbtn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); filterByMeridian(m.id);
+  };
+  nav.appendChild(b);
+});
+
+/* ══ BUILD TABLES ══ */
+const mc = document.getElementById('mc');
+MERIDIANS.forEach(m=>{
+  const bl = document.createElement('div');
+  bl.className='mblock'; bl.id='mb-'+m.id; bl.dataset.mid=m.id;
+  bl.dataset.searchMeta=`${m.name} ${m.ptSigla} ${m.enSigla} ${m.chinese} ${m.zh} ${m.element} ${m.orgao}`;
+  const rows = m.points.map(p=>{
+    const tags = p.ind.map(i=>{
+      const isWarn = i.startsWith('⚠');
+      const isFund = i.startsWith('★');
+      return `<span class="tag${isWarn?' tagw':isFund?' tag-imp':''}">${i}</span>`;
+    }).join('');
+    const t = p.tec || {};
+    const isNoStim = t.tipo && t.tipo.startsWith('⚠');
+    const tecHtml = t.tipo ? `<div class="tec-wrap">
+      <div class="tec-tipo${isNoStim?' tagw':''}" style="${isNoStim?'color:var(--red);font-weight:600':''}">
+        ${t.tipo}
+      </div>
+      ${isNoStim ? '' : `
+      <div class="tec-row"><span class="tec-label">ferramenta</span><span class="tec-val">${t.ferramenta||''}</span></div>
+      <div class="tec-row"><span class="tec-label">movimento</span><span class="tec-val">${t.movimento||''}</span></div>
+      `}
+      <span class="tec-proto" style="${isNoStim?'background:rgba(139,26,26,.1);border-color:rgba(139,26,26,.3);color:var(--red)':''}">${t.protocolo||''}</span>
+    </div>` : '—';
+    return `<tr><td class="tn">${p.num}</td><td>${p.name}</td><td class="tpt">${p.pt}</td><td class="ten">${p.en}</td><td class="tloc">${p.loc}</td><td>${tags}</td><td>${tecHtml}</td></tr>`;
+  }).join('');
+  bl.innerHTML=`
+    <div class="mhd" data-zh="${m.zh}">
+      <div class="mbar" style="background:${m.color}"></div>
+      <div class="mt"><h3>${m.name}</h3><span class="mzh">${m.chinese}</span></div>
+      <div class="msig"><span class="pt">${m.ptSigla} · pt</span><span class="en">${m.enSigla} · en</span></div>
+    </div>
+    <div class="minfo">
+      <span><strong>Elemento:</strong> ${m.element}</span>
+      <span><strong>Natureza:</strong> ${m.orgao}</span>
+      <span><strong>Fluxo:</strong> ${m.fluxo}</span>
+      <span><strong>Total:</strong> ${m.totalPontos} pontos</span>
+    </div>
+    <div class="mdesc">${m.desc}</div>
+    <div class="tw"><table>
+      <thead><tr><th>Nº</th><th>Pinyin</th><th>PT</th><th>EN</th><th>Localização</th><th>Indicações</th><th>Técnica de Estimulação</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table></div>
+    <span class="bkt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Voltar ao topo</span>`;
+  mc.appendChild(bl);
+});
+
+/* ══ FILTERS ══ */
+function filterByMeridian(id){
+  document.getElementById('si').value='';
+  document.querySelectorAll('tbody tr').forEach(r=>r.style.display='');
+  document.querySelectorAll('.mblock').forEach(b=>b.classList.toggle('hidden',b.dataset.mid!==id));
+}
+function fa(){
+  const q=document.getElementById('si').value.toLowerCase().trim();
+  document.querySelectorAll('.mbtn').forEach(b=>b.classList.remove('active'));
+  if(!q){
+    document.querySelectorAll('.mblock').forEach(b=>b.classList.remove('hidden'));
+    document.querySelectorAll('tbody tr').forEach(r=>r.style.display='');
+    allB.classList.add('active');
+    return;
+  }
+  document.querySelectorAll('.mblock').forEach(bl=>{
+    const merMeta = (bl.dataset.searchMeta||'').toLowerCase();
+    const merMatch = merMeta.includes(q);
+    let rowHit=false;
+    bl.querySelectorAll('tbody tr').forEach(r=>{
+      const match = r.textContent.toLowerCase().includes(q) || merMatch;
+      r.style.display=match?'':'none';
+      if(match) rowHit=true;
+    });
+    bl.classList.toggle('hidden',!rowHit);
+  });
+}
+function cs(){document.getElementById('si').value='';fa();allB.classList.add('active');}
+
+/* ══ INDICATION INDEX ══ */
+(function buildIndex(){
+  const CATS = ['Dor','Cabeça','Digestão','Sono','Ansiedade','Respiração','Ginecologia','Lombar','Olhos','Ouvidos','Pele','Circulação','Imunidade','Urinário','Paralisia','Emergência'];
+  const CAT_KEYS = {
+    'Dor':['dor','cefaleia','enxaqueca','lombalgia','ciático','artrite','nevralgia','cólica','precordial','opressão'],
+    'Cabeça':['cefaleia','cefal','cabeça','sinusite','rinite','enxaqueca','vertigem','tontura','epistaxe','migrânea'],
+    'Digestão':['gastrite','úlcera','diarreia','constipação','distensão','vômito','náusea','digestão','abdome','abdominal','epigást','borborigmo','soluço','anorexia'],
+    'Sono':['insônia','sono','sonhos','agitação','amnésia'],
+    'Ansiedade':['ansiedade','angústia','depressão','palpitações','shen','mental','epilepsia','mania','medo','fobia'],
+    'Respiração':['tosse','asma','bronquite','dispneia','expectoração','pulmão','pneumonia','hemoptise','rinite','garganta','laringite'],
+    'Ginecologia':['menstrual','menorragia','dismenorreia','leucorreia','amenorreia','irregularidade','gestação','útero','ginecol','infertilidade','menopausa','lactação','parto','vulvar'],
+    'Lombar':['lombalgia','lombar','coluna','costas','ciático','sacro','lombo'],
+    'Olhos':['ocular','olho','visão','miopia','conjuntivite','lacrimejar','ptose','lacrimej'],
+    'Ouvidos':['surdez','tinnitus','zumbido','otite','ouvido','audição','tinido'],
+    'Pele':['eczema','urticária','prurido','pele','acne','furúnculo','dermat'],
+    'Circulação':['hipertensão','circulação','sangue','anemia','edema','vasos','pressão','trombose','varizes'],
+    'Imunidade':['febre','imunidade','gripe','infecção','tonsilite','inflamaç','defensiva','malária'],
+    'Urinário':['urinária','urina','retenção','incontinência','bexiga','noctúria','poliúria','hematúria'],
+    'Paralisia':['paralisia','hemiplegia','paresia','apoplexia','avc','facial','desvio'],
+    'Emergência':['ressuscitação','coma','desmaio','emergência','convulsão','choque','colapso'],
+  };
+  const index = {};
+  MERIDIANS.forEach(m => {
+    m.points.forEach(p => {
+      p.ind.forEach(raw => {
+        const clean = raw.replace(/[⚠★][^,]*/g,'').replace(/—.*$/,'').trim();
+        if(!clean || clean.length < 3) return;
+        const key = clean.toLowerCase();
+        if(!index[key]) index[key] = [];
+        if(!index[key].some(x=>x.pt===p.pt))
+          index[key].push({name:clean, pt:p.pt, en:p.en, mer:m.name, color:m.color});
+      });
+    });
+  });
+  const sortedKeys = Object.keys(index).sort((a,b)=>a.localeCompare(b,'pt'));
+  const catWrap = document.getElementById('idxCats');
+  if(!catWrap) return;
+  CATS.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className='idx-cat'; btn.textContent=cat;
+    btn.onclick = () => {
+      document.querySelectorAll('.idx-cat').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('idxInput').value='';
+      const keys = CAT_KEYS[cat]||[cat.toLowerCase()];
+      const matches = sortedKeys.filter(k=>keys.some(kw=>k.includes(kw)));
+      renderResults(matches);
+    };
+    catWrap.appendChild(btn);
+  });
+  window.idxSearch = function(){
+    const q = document.getElementById('idxInput').value.toLowerCase().trim();
+    document.querySelectorAll('.idx-cat').forEach(b=>b.classList.remove('active'));
+    if(!q){
+      document.getElementById('idxResults').innerHTML='<p class="idx-empty">Digite uma condição ou selecione uma categoria acima.</p>';
+      return;
+    }
+    const matches = sortedKeys.filter(k=>k.includes(q));
+    renderResults(matches);
+  };
+  function renderResults(matches){
+    const wrap = document.getElementById('idxResults');
+    if(!matches.length){ wrap.innerHTML='<p class="idx-empty">Nenhum ponto encontrado para essa indicação.</p>'; return; }
+    const seen = new Set();
+    const cards = [];
+    matches.forEach(key => {
+      if(seen.has(key)) return;
+      seen.add(key);
+      cards.push({displayName: index[key][0].name, pts: index[key]});
+    });
+    wrap.innerHTML = cards.slice(0,80).map(({displayName, pts}) => {
+      const ptBadges = pts.map(p =>
+        `<span class="idx-pt" style="color:${p.color};border-color:${p.color}40;background:${p.color}14"
+          title="${p.mer}" onclick="jumpToPoint('${p.pt}')">${p.pt}</span>`
+      ).join('');
+      return `<div class="idx-card"><div class="idx-ind">${displayName}</div><div class="idx-pts">${ptBadges}</div></div>`;
+    }).join('');
+  }
+  window.jumpToPoint = function(sigla){
+    document.querySelectorAll('.mblock').forEach(b=>b.classList.remove('hidden'));
+    document.querySelectorAll('tbody tr').forEach(r=>r.style.display='');
+    const tableSection = document.querySelector('.nav-s');
+    if(tableSection) tableSection.scrollIntoView({behavior:'smooth',block:'start'});
+    setTimeout(()=>{
+      document.getElementById('si').value = sigla;
+      fa();
+      setTimeout(()=>{
+        const firstVisible = document.querySelector('.mblock:not(.hidden)');
+        if(firstVisible) firstVisible.scrollIntoView({behavior:'smooth',block:'start'});
+      },200);
+    },400);
+  };
+})();
+
+/* ══════════════════════════════════════════════════════
+   WIDGET — ASSISTENTE DE DIAGNÓSTICO MTC
+   ══════════════════════════════════════════════════════ */
+const SYSTEM = `Você é um assistente especializado em Medicina Tradicional Chinesa (MTC), com profundo conhecimento em acupressura, meridianos e digitopressão. Você integra o Atlas de Acupressura & Digitopressão.
+
+Sua função é conduzir uma anamnese estruturada para identificar padrões de desequilíbrio em MTC e recomendar pontos de acupressura como apoio terapêutico. Fale sempre em português brasileiro, com clareza e acolhimento.
+
+FLUXO OBRIGATÓRIO:
+
+FASE 1 — QUEIXA PRINCIPAL
+Receba a queixa. Se o usuário não informar localização, qualidade ou duração, pergunte de forma acolhedora e concisa.
+
+FASE 2 — ANAMNESE EM MTC
+Faça entre 3 e 5 perguntas progressivas, UMA ou NO MÁXIMO DUAS por turno. Explore:
+- Qualidade do sintoma (latejante, em aperto, queimando, frio, migratório, fixo)
+- Fatores de melhora e piora (calor, frio, pressão, hora do dia, refeições, emoções)
+- Sintomas associados: digestão, sono, energia, emoções predominantes, sede, transpiração
+- Duração e frequência
+
+FASE 3 — IDENTIFICAÇÃO DO PADRÃO
+Com informações suficientes (geralmente 3–4 turnos), anuncia em uma frase o padrão MTC identificado antes de montar o protocolo.
+
+FASE 4 — PROTOCOLO
+Quando tiver dados suficientes, emita o protocolo em JSON. Escreva uma frase de transição natural antes do bloco, depois insira exatamente:
+
+PROTOCOLO_JSON_START
+{
+  "pattern": "Nome do padrão em MTC",
+  "pattern_zh": "漢字",
+  "rationale": "Explicação acessível do padrão em 2–3 frases, com termos MTC mas compreensível para leigos.",
+  "points": [
+    {
+      "code": "E36",
+      "name_pt": "Mar Inferior do Pé Yang",
+      "name_zh": "足三里",
+      "name_py": "Zú Sān Lǐ",
+      "loc": "3 cun abaixo do bordo inferior da patela, 1 cun lateral à crista da tíbia",
+      "action": "Tonifica o Qi e o Sangue, fortalece o Baço-Estômago"
+    }
+  ],
+  "technique": "Pressionar com o polegar 60–90 segundos por ponto, na expiração. Repetir 2–3× ao dia.",
+  "phase": 4
+}
+PROTOCOLO_JSON_END
+
+REGRAS DO PROTOCOLO:
+- Entre 4 e 7 pontos, combinando pontos locais, distais e de ação sistêmica
+- O campo "code" deve seguir a sigla padrão do atlas (E36, IG4, BP6, F3, PC6, VG20, VC4, B23, VB20, etc.)
+- Nunca diagnostique doenças; trabalhe sempre com padrões de desequilíbrio MTC
+- Sempre inclua a instrução técnica de estimulação no campo "technique"`;
+
+let wIsOpen=false, wLoading=false, wHistory=[], wPhase=0;
+const PHASES=['ph0','ph1','ph2','ph3'];
+
+const wFab     = document.getElementById('fab');
+const wWidget  = document.getElementById('chat-widget');
+const wClose   = document.getElementById('w-close');
+const wMsgs    = document.getElementById('w-messages');
+const wInput   = document.getElementById('w-input');
+const wSend    = document.getElementById('w-send');
+const wReset   = document.getElementById('w-reset');
+const wChips   = document.getElementById('w-chips');
+const wIconO   = document.getElementById('fab-icon-open');
+const wIconC   = document.getElementById('fab-icon-close');
+
+function wToggle(){
+  wIsOpen=!wIsOpen;
+  wWidget.classList.toggle('open',wIsOpen);
+  wIconO.style.opacity=wIsOpen?'0':'1';
+  wIconC.style.opacity=wIsOpen?'1':'0';
+  wIconO.style.transform=wIsOpen?'rotate(90deg)':'rotate(0deg)';
+  wIconC.style.transform=wIsOpen?'rotate(0deg)':'rotate(-90deg)';
+  if(wIsOpen && wHistory.length===0) wInit();
+}
+wFab.addEventListener('click',wToggle);
+wClose.addEventListener('click',wToggle);
+
+function wInit(){
+  wHistory=[]; wPhase=0; wSetPhase(0);
+  wAddAI('Olá. Sou o assistente de diagnóstico por acupressura deste atlas.\n\nEstou aqui para ajudá-lo a mapear desequilíbrios segundo a Medicina Tradicional Chinesa e indicar pontos para estimulação como apoio terapêutico.\n\nDescreva sua queixa principal — onde sente o desconforto e como ele se manifesta.');
+  wSetChips(['Dor de cabeça','Ansiedade · estresse','Dores nas costas','Insônia','Fadiga','Problemas digestivos','Tensão no pescoço','Irregularidade menstrual']);
+}
+
+function wSetPhase(n){
+  wPhase=n;
+  PHASES.forEach((id,i)=>{
+    const el=document.getElementById(id);
+    el.className='w-phase'+(i<n?' done':i===n?' active':'');
+  });
+}
+
+function wMk(tag,cls){const el=document.createElement(tag);if(cls)el.className=cls;return el;}
+
+function wAddAI(text){
+  const w=wMk('div','w-msg w-msg-ai');
+  const s=wMk('div','w-sender');s.textContent='ASSISTENTE MTC';
+  const b=wMk('div','w-bubble');b.innerHTML=wFmt(text);
+  w.append(s,b);wMsgs.appendChild(w);wScroll();
+}
+function wAddUser(text){
+  const w=wMk('div','w-msg w-msg-user');
+  const s=wMk('div','w-sender');s.textContent='VOCÊ';
+  const b=wMk('div','w-bubble');b.textContent=text;
+  w.append(s,b);wMsgs.appendChild(w);wScroll();
+}
+function wAddProtocol(d){
+  const wrap=wMk('div','w-msg w-msg-ai');
+  const sender=wMk('div','w-sender');sender.textContent='PROTOCOLO GERADO';
+  const card=wMk('div','w-protocol');
+  const head=wMk('div','w-proto-head');
+  head.setAttribute('data-zh',d.pattern_zh||'');
+  const bar=wMk('div','w-proto-bar');
+  const pat=wMk('div','w-proto-pattern');
+  pat.innerHTML=`${d.pattern}<small>${d.pattern_zh||''}</small>`;
+  head.append(bar,pat);
+  const rat=wMk('div','w-proto-rationale');rat.textContent=d.rationale;
+  const pw=wMk('div','');
+  (d.points||[]).forEach(p=>{
+    const item=wMk('div','w-point');
+    item.innerHTML=`
+      <div class="w-point-header">
+        <span class="w-point-code">${p.code}</span>
+        <span class="w-point-name-pt">${p.name_pt}</span>
+        <span class="w-point-name-zh">${p.name_zh}</span>
+        <span class="w-point-name-py">${p.name_py}</span>
+      </div>
+      <div class="w-point-loc">${p.loc}</div>
+      <div class="w-point-action">${p.action}</div>
+      <a href="javascript:void(0)" class="w-point-link" onclick="jumpToPoint('${p.code}')" title="Ver nas tabelas do atlas">
+        <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+        </svg>Ver no atlas
+      </a>`;
+    pw.appendChild(item);
+  });
+  const tec=wMk('div','w-proto-tec');
+  tec.innerHTML=`<div class="w-proto-tec-label">Técnica de Estimulação</div><div class="w-proto-tec-val">${d.technique}</div><span class="w-proto-tec-badge">Protocolo · MTC</span>`;
+  const disc=wMk('div','w-disclaimer');
+  disc.innerHTML=`<strong>⚠ Aviso:</strong> Esta ferramenta tem finalidade exclusivamente educativa e de apoio. Não substitui avaliação ou tratamento de profissional de saúde habilitado.`;
+  card.append(head,rat,pw,tec,disc);
+  wrap.append(sender,card);wMsgs.appendChild(wrap);wScroll();wSetPhase(3);
+}
+function wAddTyping(){
+  const t=wMk('div','w-msg w-msg-ai');t.id='w-typing';
+  const b=wMk('div','w-typing');b.innerHTML='<span></span><span></span><span></span>';
+  t.appendChild(b);wMsgs.appendChild(t);wScroll();
+}
+function wRmTyping(){document.getElementById('w-typing')?.remove();}
+function wSetChips(items){
+  wChips.innerHTML='';
+  items.forEach(label=>{
+    const btn=wMk('button','w-chip');btn.textContent=label;
+    btn.onclick=()=>{wInput.value=label;wChips.innerHTML='';wSendMsg();};
+    wChips.appendChild(btn);
+  });
+}
+async function wSendMsg(){
+  const text=wInput.value.trim();
+  if(!text||wLoading) return;
+  wChips.innerHTML='';
+  wInput.value='';wInput.style.height='auto';
+  wAddUser(text);
+  wHistory.push({role:'user',content:text});
+  if(wPhase===0) wSetPhase(1);
+  else if(wPhase===1&&wHistory.length>=4) wSetPhase(2);
+  wLoading=true;wSend.disabled=true;wAddTyping();
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM,messages:wHistory})
+    });
+    const data=await res.json();
+    const raw=data.content?.[0]?.text||'';
+    wHistory.push({role:'assistant',content:raw});
+    wRmTyping();
+    const match=raw.match(/PROTOCOLO_JSON_START\s*([\s\S]*?)\s*PROTOCOLO_JSON_END/);
+    if(match){
+      const pre=raw.split('PROTOCOLO_JSON_START')[0].trim();
+      if(pre) wAddAI(pre);
+      try{wAddProtocol(JSON.parse(match[1].trim()));wSetChips(['Explicar mais o padrão','Pontos complementares','Nova consulta']);}
+      catch{wAddAI(raw);}
+    } else {wAddAI(raw);}
+  }catch(err){
+    wRmTyping();
+    wAddAI('Erro de conexão com o assistente. Por favor, tente novamente.');
+    wHistory.pop();
+  }
+  wLoading=false;wSend.disabled=false;wInput.focus();
+}
+wSend.addEventListener('click',wSendMsg);
+wInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();wSendMsg();}});
+wInput.addEventListener('input',()=>{wInput.style.height='auto';wInput.style.height=Math.min(wInput.scrollHeight,90)+'px';});
+wReset.addEventListener('click',()=>{wMsgs.innerHTML='';wHistory=[];wChips.innerHTML='';wSetPhase(0);wInit();});
+function wFmt(t){return t.replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>');}
+function wScroll(){setTimeout(()=>{wMsgs.scrollTop=wMsgs.scrollHeight;},40);}
+</script>
+</body>
+</html>
