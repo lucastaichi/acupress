@@ -1162,10 +1162,20 @@ async function wSendMsg(){
         'Content-Type':'application/json',
         'anthropic-dangerous-direct-browser-access':'true'
       },
-      body:JSON.stringify({model:'claude-sonnet-4-6-20250514',max_tokens:1000,system:SYSTEM,messages:wHistory})
+      body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:1000,system:SYSTEM,messages:wHistory})
     });
     const data=await res.json();
+    if(data.error){
+      wRmTyping();
+      wAddAI('Erro da API: ' + (data.error.message||JSON.stringify(data.error)));
+      wHistory.pop(); wLoading=false; wSend.disabled=false; return;
+    }
     const raw=data.content?.[0]?.text||'';
+    if(!raw){
+      wRmTyping();
+      wAddAI('Resposta vazia. Tente novamente.');
+      wHistory.pop(); wLoading=false; wSend.disabled=false; return;
+    }
     wHistory.push({role:'assistant',content:raw});
     wRmTyping();
     const match=raw.match(/PROTOCOLO_JSON_START\s*([\s\S]*?)\s*PROTOCOLO_JSON_END/);
