@@ -16,6 +16,9 @@
   --header-hover:#1e160d;
   --tbody-hover:rgba(184,134,11,.05);
   --thead-bg:rgba(21,16,10,.055);
+  --msig-en:rgba(21,16,10,.45);
+  --disc-ref:#5a4430;
+  --toggle-stroke:var(--muted);
 }
 html.dark{
   --ink:#e8ddc8;--paper:#13100c;--paper2:#1c1710;--paper3:#251e14;
@@ -27,6 +30,9 @@ html.dark{
   --header-hover:#2a2016;
   --tbody-hover:rgba(184,134,11,.07);
   --thead-bg:rgba(255,255,255,.04);
+  --msig-en:rgba(232,221,200,.45);
+  --disc-ref:#c8b898;
+  --toggle-stroke:rgba(246,238,221,0.7);
 }
 
 /* ─── THEME TOGGLE BUTTON ─── */
@@ -61,7 +67,7 @@ header::before{content:'';position:absolute;inset:0;
 .h-zh{font-family:'Noto Serif SC',serif;font-size:2.2rem;color:var(--gold-l);
   letter-spacing:.5em;display:block;margin-bottom:.9rem}
 header h1{font-family:'Cinzel',serif;font-size:clamp(1.8rem,4vw,3rem);
-  font-weight:700;letter-spacing:.07em;margin-bottom:.45rem}
+  font-weight:700;letter-spacing:.07em;margin-bottom:.45rem;color:#f6eedd}
 header p{font-style:italic;color:rgba(246,238,221,.62);font-size:1.08rem;margin-bottom:1.4rem}
 .h-div{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-l),transparent);margin:1.2rem auto}
 .h-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.45rem;margin-top:1rem}
@@ -176,7 +182,7 @@ header p{font-style:italic;color:rgba(246,238,221,.62);font-size:1.08rem;margin-
 .mt .mzh{font-family:'Noto Serif SC',serif;font-size:.95rem;color:var(--gold-l)}
 .msig{margin-left:auto;text-align:right;font-family:'Cinzel',serif;font-size:.85rem;letter-spacing:.1em}
 .msig .pt{color:var(--gold-l);display:block}
-.msig .en{color:rgba(246,238,221,.45);font-size:.73rem}
+.msig .en{color:var(--msig-en);font-size:.73rem}
 .minfo{padding:.8rem 1.7rem;background:rgba(21,16,10,.04);border-bottom:1px solid var(--border);
   font-style:italic;color:var(--muted);font-size:.9rem;display:flex;gap:1.8rem;flex-wrap:wrap}
 .minfo span strong{font-style:normal;color:var(--ink)}
@@ -432,7 +438,7 @@ html.dark footer{background:#0e0b08;}
     <strong>Contraindicações absolutas da acupressura:</strong> gestação (especialmente IG4, BP6, VB21, B60, B67); marcapasso eletrônico; neoplasia ativa na região do ponto; trombose venosa profunda (risco de deslocamento de coágulo); pele lesionada, queimaduras, feridas abertas ou infecções no local; fraturas ou osteoporose severa na região; linfedema em membro afetado; estado febril agudo com sinais de infecção sistêmica.<br><br>
     <strong>Nota sobre moxabustão:</strong> Alguns pontos (ex.: VC8, B67) admitem moxabustão como técnica principal. Moxabustão é a aplicação de calor por combustão de artemísia — técnica distinta da pressão digital e que requer treinamento específico. Não confundir com acupressura.<br><br>
     <strong style="color:var(--gold-l);font-style:normal;display:block;margin-top:1.4rem;margin-bottom:.6rem;font-family:'Cinzel',serif;letter-spacing:.08em;font-size:.85rem">REFERÊNCIAS BIBLIOGRÁFICAS</strong>
-    <em style="color:rgba(246,238,221,.55);font-size:.78rem;line-height:2;display:block;text-align:left;max-width:680px;margin:0 auto">
+    <em style="color:var(--disc-ref);font-size:.78rem;line-height:2;display:block;text-align:left;max-width:680px;margin:0 auto">
       [1] <strong>Huangdi Neijing — Suwen &amp; Lingshu</strong> (黄帝内經·素問·靈樞). Compilado entre os sécs. III a.C. e I d.C. Fonte primária dos meridianos, pontos e teoria dos 5 Elementos.<br>
       [2] <strong>Zhenjiu Jiayi Jing</strong> (針灸甲乙經). Huangfu Mi, séc. III d.C. Primeiro cânone sistemático de acupuntura e moxabustão com localização precisa dos pontos.<br>
       [3] <strong>Zhenjiu Dacheng</strong> (針灸大成). Yang Jizhou, 1601. Obra enciclopédica da Dinastia Ming; principal referência clínica clássica.<br>
@@ -1096,7 +1102,7 @@ MERIDIANS.forEach(m=>{
       <div class="mt"><h3>${m.name}</h3><span class="mzh">${m.chinese}</span></div>
       <div class="msig"><span class="pt">${m.ptSigla} · pt</span><span class="en">${m.enSigla} · en</span></div>
       <div class="m-toggle" title="Expandir / Recolher">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(246,238,221,0.7)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--toggle-stroke)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="6 9 12 15 18 9"/>
         </svg>
       </div>
